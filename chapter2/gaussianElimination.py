@@ -3,7 +3,13 @@
 import numpy as np
 import scipy.linalg as la
 
-
+"""
+Parametric solution function to express the solution in terms of free variables
+R: RREF matrix
+var: number of variables
+eps: tolerance for identifying pivot elements,
+1e-10 is a common choice to avoid issues with floating-point precision
+"""
 def parametric_solution(R, var, eps=1e-10):
     # Identify pivot and free variables
     pivot_cols = []
