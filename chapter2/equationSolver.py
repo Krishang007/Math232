@@ -2,6 +2,9 @@
 
 import numpy as np
 import scipy.linalg as la
+import sympy as sp
+from sympy import pprint, sympify
+
 
 
 """

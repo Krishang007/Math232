@@ -53,8 +53,6 @@ def start():
         A = userInput()
         
         if choice == 4:
-
-
             result = matrix_transpose(A)
             print("Transpose of A:")
             print(result)
@@ -62,9 +60,5 @@ def start():
             result = matrix_inverse(A)
             print("Inverse of A:")
             print(result)
-        elif choice == 6:           
-            result = matrix_determinant(A)
-            print("Determinant of A:")
-            print(result)
+       
     else:
-        
