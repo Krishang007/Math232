@@ -1,18 +1,20 @@
-# program to solve systems of linear equations using gaussian elimination
-#importing necessary libraries
+"""Solve systems of linear equations using Gaussian elimination."""
+
 import numpy as np
 import scipy.linalg as la
 
-"""
-Parametric solution function to express the solution in terms of free variables
-R: RREF matrix
-var: number of variables
-eps: tolerance for identifying pivot elements,
-1e-10 is a common choice to avoid issues with floating-point precision
-"""
-def parametric_solution(R, var, eps=1e-10):
-    # Identify pivot and free variables
+EPS = 1e-10
+
+
+def parametric_solution(R, var, eps=EPS):
+    """Print parametric solution for an RREF matrix.
+
+    R: RREF matrix
+    var: number of variables
+    eps: tolerance for identifying pivot elements
+    """
     pivot_cols = []
+    # Identify pivots
     for i in range(R.shape[0]):
         for j in range(R.shape[1] - 1):
             if abs(R[i, j]) > eps:
@@ -20,31 +22,25 @@ def parametric_solution(R, var, eps=1e-10):
                 break
 
     free_vars = [j for j in range(var) if j not in pivot_cols]
-    num_free = len(free_vars)
 
-    if num_free == 0:
-        print("Unique solution:", R[:, -1])
-        return
+    print(f"Free variables: {[f'x{j+1}' for j in free_vars]}")
 
-    print(f"Free variables: {free_vars}")
-    print("Expressing solution in terms of free variables:")
+    # Build expressions for each variable
+    for i, p_col in enumerate(pivot_cols):
+        constant = R[i, -1]
+        terms = [f"{constant:.2f}"]
+        for f_col in free_vars:
+            coef = -R[i, f_col]
+            if abs(coef) > eps:
+                terms.append(f"{'+' if coef > 0 else ''}{coef:.2f}*x{f_col+1}")
+        print(f"x{p_col+1} = {' '.join(terms)}")
 
-    # Create a solution vector with parameters for free variables
-    solution = np.zeros(var)
-    for i in range(len(pivot_cols)):
-        col = pivot_cols[i]
-        solution[col] = R[i, -1]
-        for j in free_vars:
-            solution[col] -= R[i, j] * f"x{j + 1}"
-
-    print("Parametric form of the solution:")
-    print(solution)
-
-
+    for f_col in free_vars:
+        print(f"x{f_col+1} = x{f_col+1} (free)")
 
 
 def add_row(A, k, i, j):
-    "row j <- k times row i added to row j in matrix A."
+    """Row j <- k times row i added to row j in matrix A."""
     n = A.shape[0]
     E = np.eye(n)
     if i == j:
@@ -55,7 +51,7 @@ def add_row(A, k, i, j):
 
 
 def scale_row(A, k, i):
-    "row i <- k times row i in matrix A"
+    """Row i <- k times row i in matrix A."""
     n = A.shape[0]
     E = np.eye(n)
     E[i, i] = k
@@ -63,7 +59,7 @@ def scale_row(A, k, i):
 
 
 def swap_row(A, i, j):
-    "row i <-> row j in matrix A"
+    """Row i <-> row j in matrix A."""
     n = A.shape[0]
     E = np.eye(n)
     if i != j:
@@ -71,14 +67,8 @@ def swap_row(A, i, j):
     return E @ A
 
 
-"""
-Function to input the coefficients of the equations
-and the constants
-Returns: a tuple of the matrix of coefficients and the vector of constants
-"""
-
-
 def get_system():
+    """Collect coefficients and constants from user input."""
     # ask user for number of variables
     while True:
         try:
@@ -126,74 +116,89 @@ def get_system():
     return A, b, var
 
 
-# get_system() returns a tuple of the matrix of coefficients and the vector of constants
-A, b, var = get_system()
+def gaussian_elimination(A, b, var, eps=EPS, show_steps=True):
+    """Perform Gaussian elimination and return RREF."""
+    b = np.reshape(b, (var, 1))
+    aug_mat = np.hstack([A, b])
+    if show_steps:
+        print(aug_mat)
 
-# After coefficients and constants are parsed we can perform gaussian elimination
-b = np.reshape(b, (var, 1))
-aug_mat = np.hstack([A, b])
-print(aug_mat)
+    R = aug_mat.copy()
+    step = 0
 
-# Gaussian elimination for n x n system using row operations
-R = aug_mat.copy()
-step = 0
+    def print_step(label, mat):
+        nonlocal step
+        step += 1
+        print(f"\nStep {step}: {label}")
+        print(mat)
 
-def print_step(label, mat):
-    global step
-    step += 1
-    print(f"\nStep {step}: {label}")
-    print(mat)
+    # Forward elimination
+    for col in range(var):
+        pivot = col
+        while pivot < var and abs(R[pivot, col]) < eps:
+            pivot += 1
+        if pivot == var:
+            continue
+
+        if pivot != col:
+            R = swap_row(R, col, pivot)
+            if show_steps:
+                print_step(f"swap_row(R, {col}, {pivot})", R)
+
+        pivot_val = R[col, col]
+        if abs(pivot_val) > eps:
+            R = scale_row(R, 1 / pivot_val, col)
+            if show_steps:
+                print_step(f"scale_row(R, {1 / pivot_val}, {col})", R)
+
+        for row in range(col + 1, var):
+            if abs(R[row, col]) > eps:
+                factor = -R[row, col]
+                R = add_row(R, factor, col, row)
+                if show_steps:
+                    print_step(f"add_row(R, {factor}, {col}, {row})", R)
+
+    # Back substitution to reduced row echelon form
+    for col in range(var - 1, -1, -1):
+        for row in range(col - 1, -1, -1):
+            if abs(R[row, col]) > eps:
+                factor = -R[row, col]
+                R = add_row(R, factor, col, row)
+                if show_steps:
+                    print_step(f"add_row(R, {factor}, {col}, {row})", R)
+
+    if show_steps:
+        print("\nFinal RREF:")
+        print(R)
+
+    return R, aug_mat
 
 
-# Forward elimination
-for col in range(var):
-    pivot = col
-    while pivot < var and abs(R[pivot, col]) < 1e-10:
-        pivot += 1
-    if pivot == var:
-        continue
+def main():
+    # get_system() returns a tuple of the matrix of coefficients and the vector of constants
+    A, b, var = get_system()
 
-    if pivot != col:
-        R = swap_row(R, col, pivot)
-        print_step(f"swap_row(R, {col}, {pivot})", R)
+    # After coefficients and constants are parsed we can perform gaussian elimination
+    R, aug_mat = gaussian_elimination(A, b, var)
 
-    pivot_val = R[col, col]
-    if pivot_val != 0:
-        R = scale_row(R, 1 / pivot_val, col)
-        print_step(f"scale_row(R, {1 / pivot_val}, {col})", R)
+    # Check consistency using rank theorem
+    rank_A = np.linalg.matrix_rank(A)
+    rank_augmented = np.linalg.matrix_rank(aug_mat)
 
-    for row in range(col + 1, var):
-        if R[row, col] != 0:
-            R = add_row(R, -R[row, col], col, row)
-            print_step(f"add_row(R, {-R[row, col]}, {col}, {row})", R)
-
-
-# Back substitution to reduced row echelon form
-for col in range(var - 1, -1, -1):
-    for row in range(col - 1, -1, -1):
-        if R[row, col] != 0:
-            R = add_row(R, -R[row, col], col, row)
-            print_step(f"add_row(R, {-R[row, col]}, {col}, {row})", R)
-
-
-print("\nFinal RREF:")
-print(R)
-
-# Check consistency using rank theorem
-augmented = aug_mat
-rank_A = np.linalg.matrix_rank(A)
-rank_augmented = np.linalg.matrix_rank(augmented)
-
-if rank_A == rank_augmented:
-    print("The system is consistent")
-    if rank_A == var:
-        print("The system has a unique solution")
-        x = la.solve(A, b)
-        print("\nSolution vector:")
-        print(x)
+    if rank_A == rank_augmented:
+        print("The system is consistent")
+        if rank_A == var:
+            print("The system has a unique solution")
+            x = la.solve(A, b)
+            print("\nSolution vector:")
+            print(x)
+        else:
+            print("The system has infinitely many solutions")
+            parametric_solution(R, var)
     else:
-        print("The system has infinitely many solutions")
-        parametric_solution(R, var)
-else:
-    print("The system is inconsistent (no solution)")
-    print(f"Rank(A) = {rank_A}, Rank([A|b]) = {rank_augmented}")
+        print("The system is inconsistent (no solution)")
+        print(f"Rank(A) = {rank_A}, Rank([A|b]) = {rank_augmented}")
+
+
+if __name__ == "__main__":
+    main()

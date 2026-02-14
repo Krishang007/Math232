@@ -1,5 +1,9 @@
 #program to help students perform basic matrix operations
-
+def matrix_subtraction(A, B):
+    if A.shape != B.shape:
+        print("Error: Matrices must have the same dimensions for subtraction.")
+        return None
+    return A - B  
 import numpy as np
 def userInput():
     row = int(input("Enter the number of rows: "))
@@ -51,8 +55,16 @@ def start():
         if choice == 4:
 
 
-def matrix_subtraction(A, B):
-    if A.shape != B.shape:
-        print("Error: Matrices must have the same dimensions for subtraction.")
-        return None
-    return A - B    
+            result = matrix_transpose(A)
+            print("Transpose of A:")
+            print(result)
+        elif choice == 5:
+            result = matrix_inverse(A)
+            print("Inverse of A:")
+            print(result)
+        elif choice == 6:           
+            result = matrix_determinant(A)
+            print("Determinant of A:")
+            print(result)
+    else:
+        
