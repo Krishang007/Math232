@@ -2,6 +2,8 @@
 Coding Linear Algebra Concepts
 
 <<<<<<< HEAD
+Chapter1:Vectors
+Chapter2:Solving Equations
+Chapter3:Matrices
+Chapter4:
 
-=======
->>>>>>> 04cafb6b6d8b2d1f5de96f8585610b7a2131280a
