@@ -3,16 +3,16 @@ from rref import rref
 
 # Define matrix A (4x4 NumPy array).
 A = np.array([
-    [1, 0, 1, 2],
-    [1, 1, -1, 1],
-    [-1, 3, 2, 4],
-    [1, -1, -3, -3],
+    [1,0],
+    [0,1],
+    [0,1]
+
 ])
 
 print("Original matrix A:")
 print(A)
 # b is a zero vector.
-b = np.zeros(4)
+b = np.zeros(3)
 
 # Compute RREF of the augmented matrix [A|b].
 Ab = np.hstack((A, b.reshape(-1, 1)))
