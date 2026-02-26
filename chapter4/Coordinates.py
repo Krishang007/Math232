@@ -9,18 +9,20 @@ We will find the coordinates of the vector b with respect to this basis.
 """
 
 A = np.array([
-    [1, -1],
-    [2,  3],
-    [1,  1]
+    [1, 1, 0],
+    [1, 0, 1],
+    [0, 3, 3],   
+    [-3, 3, 6]
 ])
 
 print("Original matrix A:")
 print(A)
 
 b = np.array([
-    [-8],
-    [9],
-    [2]
+    [-1],
+    [1],
+    [6],        
+    [15]
 ])
 
 # Augmented matrix
