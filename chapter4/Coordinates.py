@@ -1,5 +1,6 @@
 import numpy as np
 from rref import rref
+from fractions import Fraction
 
 """
 Script to find coordinates respecting a non-standard basis.
@@ -9,20 +10,18 @@ We will find the coordinates of the vector b with respect to this basis.
 """
 
 A = np.array([
-    [1, 1, 0],
-    [1, 0, 1],
-    [0, 3, 3],   
-    [-3, 3, 6]
+    [7,0],
+    [3,3],
+    [0,7]
 ])
 
 print("Original matrix A:")
 print(A)
 
 b = np.array([
-    [-1],
-    [1],
-    [6],        
-    [15]
+    [2],
+    [6],
+    [9]
 ])
 
 # Augmented matrix
@@ -33,6 +32,11 @@ print(Ab)
 rref_Ab, pivot_cols_Ab = rref(Ab)
 print("\nRREF of the augmented matrix [A|b]:")
 print(rref_Ab)
+
+if np.any(np.abs(rref_Ab - np.round(rref_Ab)) > 1e-10):
+    print("\nRREF of the augmented matrix [A|b] (in fractions):")
+    with np.printoptions(formatter={'float_kind': lambda x: str(Fraction(x).limit_denominator(10000))}):
+        print(rref_Ab)
 
 tol = 1e-10
 lhs = rref_Ab[:, :-1]
@@ -62,20 +66,22 @@ else:
     for j in range(n):
         pivot_row = pivot_row_for_col[j]
         const = rhs[pivot_row]
+        const_frac = Fraction(const).limit_denominator(10000)
 
         terms = []
         for free_col in free_cols:
             coeff = -lhs[pivot_row, free_col]
             if abs(coeff) < tol:
                 continue
-            terms.append(f"({coeff:g})*t")
+            coeff_frac = Fraction(coeff).limit_denominator(10000)
+            terms.append(f"({coeff_frac})*t")
 
         expr = " + ".join(terms)
 
         if expr:
-            expr = f"{const:g} + {expr}"
+            expr = f"{const:g} (or {const_frac}) + {expr}"
         else:
-            expr = f"{const:g}"
+            expr = f"{const:g} (or {const_frac})"
 
         print(f"x{j+1} = {expr}")
 
