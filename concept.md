@@ -28,7 +28,6 @@ Linear equations, matrices, determinants. Introduction to vector spaces and line
 ## Determinants
 - Calculating determinants
 - Properties of determinants
-- Cramer's rule (optional)
 
 ## Complex Numbers
 - Arithmetic in Cartesian co-ordinates.

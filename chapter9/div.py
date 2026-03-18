@@ -18,3 +18,4 @@ result = np.array([real_part, imaginary_part])
 print("The result of (8 + 0i) / (4 - 1i) is:")
 print(f"{result[0]} + {result[1]}i")
 # Plotting the complex numbers with lines connecting them to the origin
+1
