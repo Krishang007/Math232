@@ -30,10 +30,12 @@ def print_eigen_steps(A_matrix):
     print("\nDiscriminant Check:")
     print(f"Discriminant = {discriminant}")
     if poly.degree() == 2:
-        if sp.is_negative(discriminant):
+        if discriminant.is_negative:
             print("Since the discriminant is negative, the characteristic polynomial has complex roots.")
-        else:
+        elif discriminant.is_nonnegative:
             print("Since the discriminant is non-negative, the characteristic polynomial does not have complex roots.")
+        else:
+            print("The discriminant could not be classified by sign symbolically.")
     else:
         print("Discriminant computed. The sign test for complex roots applies directly only to quadratic characteristic polynomials.")
 
