@@ -62,13 +62,13 @@ def read_yes_no(prompt):
 
 def show_elimination_steps(matrix):
     """Show elimination steps using gaussian_elimination for square matrices."""
-    #matrix shape=(rows, cols) if rows != cols then the matrix is not square and we cannot show the elimination steps
+    # Step-by-step inverse work requires a square matrix so we can augment with I.
     if matrix.shape[0] != matrix.shape[1]:
         print("\nStep-by-step elimination is available only for square matrices.")
         return
     n = matrix.shape[0]
-    b = np.zeros(n)
-    print("\nGaussian elimination steps:")
+    b = np.eye(n)
+    print("\nGaussian elimination steps on [A | I]:")
     gaussian_elimination(matrix.copy(), b, n, show_steps=True)
 
 
@@ -83,8 +83,10 @@ def analyze_matrix(matrix):
 
     if is_full_rank_square:
         inverse_kind = "Inverse"
-        inverse_value = np.linalg.inv(matrix)
-        inverse_value = to_fraction_matrix(inverse_value)
+        identity = np.eye(matrix.shape[0])
+        augmented = np.hstack((matrix.copy(), identity))
+        reduced_augmented, _ = rref(augmented)
+        inverse_value = to_fraction_matrix(reduced_augmented[:, matrix.shape[1]:])
     else:
         inverse_kind = "Inverse (not available)"
         inverse_value = "N/A - Matrix is singular or not square"

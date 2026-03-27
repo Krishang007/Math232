@@ -10,7 +10,7 @@ We will find the coordinates of the vector b with respect to this basis.
 """
 
 A = np.array([
-    [7,0],
+    [7,0,],
     [3,3],
     [0,7]
 ])

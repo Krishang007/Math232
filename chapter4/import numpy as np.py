@@ -1,22 +1,33 @@
 import numpy as np
 
-# 1. Define the basis vectors as columns of matrix P
-P = np.array([
-    [-3, -2, -1],
-    [ 3, -2,  0],
-    [ 0, -2,  2]
+from sympy import Matrix, Rational, pprint
+
+# 1. Change-of-basis matrix (basis vectors as columns)
+P = Matrix([
+    [1,  1, 0],
+    [1, -1, 0],
+    [0,  0, 1]
 ])
 
-# 2. Define the transformed vectors L(v1), L(v2), L(v3) as columns of matrix A
-A = np.array([
-    [ 2, -5, -1],
-    [ 2,  1, 18],
-    [ 2, -2, -4]
+# 2. Standard matrix of T
+A = Matrix([
+    [2,  3, 0],
+    [1,  2, 1],
+    [2, -2, 1]
 ])
+# 1. Compute P^{-1}
+P_inv = P.inv()
+pprint("P^{-1} =")
+pprint(P_inv)
+# 2. Compute P*A
+AP = A *P
+pprint("A * p =")
+pprint(AP)
 
-# 3. Solve for [L]_B such that P * [L]_B = A
-# This is equivalent to [L]_B = inv(P) * A
-L_B = np.linalg.solve(P, A)
 
-print("The matrix [L]_B is:")
-print(np.round(L_B).astype(int)) # Rounding to handle floating point precision
+# 3. [T]_B = P^{-1} * A * P
+L_B = P.inv() * A * P
+
+print("[T]_B =")
+pprint(L_B)
+#xvecor 

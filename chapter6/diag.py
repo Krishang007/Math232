@@ -1,19 +1,12 @@
 import sympy as sp
-from eigne import print_eigen_steps, print_inverse_steps
+from eigen import eigen_solve
 
-# Define matrices
-# Define matrices
-A = sp.Matrix([[4, 1],
-               [-9, 5]])
+A = sp.Matrix([[1, 2],
+               [3, 2]])
 
-P = sp.Matrix([[1, 4],
-               [-1, 1]])
+P = sp.Matrix([[6, -3],
+               [9,  3]])
 
-
-print("\n--- Eigenvalues and Eigenvectors of A ---")
-print_eigen_steps(A)
-
-print("\n--- Diagonalization Verification ---")
 print("Matrix A:")
 sp.pprint(A)
 
@@ -30,6 +23,21 @@ sp.pprint(v1)
 print("v2 =")
 sp.pprint(v2)
 
+# Get eigenvalues and eigenvectors from eigen.py
+print("\nSteps from eigen.py:")
+eigen_results = eigen_solve(A.tolist(), show_steps=True)
+
+print("\nEigenvalues from eigen.py:")
+eigenvalues = list(eigen_results.keys())
+sp.pprint(eigenvalues)
+
+print("\nEigenvectors from eigen.py:")
+for i, eigenvalue in enumerate(eigenvalues, start=1):
+    print(f"For λ = {eigenvalue}")
+    basis = eigen_results[eigenvalue]["basis"]
+    for vector in basis:
+        sp.pprint(vector)
+
 # Check if columns are eigenvectors
 print("\nCheck Av = λv")
 
@@ -38,20 +46,23 @@ for i, v in enumerate([v1, v2], start=1):
     print(f"\nA * v{i} =")
     sp.pprint(Av)
 
-    # Try to find lambda
     if v[0] != 0:
-        lam = Av[0] / v[0]
+        lam = sp.simplify(Av[0] / v[0])
     else:
-        lam = Av[1] / v[1]
+        lam = sp.simplify(Av[1] / v[1])
 
-    print(f"λ for v{i} =", lam)
-    print("λ * v =")
+    print(f"λ{i} = {lam}")
+    print(f"λ{i} * v{i} =")
     sp.pprint(lam * v)
 
+    print(f"A * v{i} - λ{i} * v{i} =")
+    sp.pprint(sp.simplify(Av - lam * v))
+
 # Compute P^{-1} A P
-print("\n--- P^{-1} Computation ---")
-P_inv = print_inverse_steps(P)
+print("\nP^{-1}:")
+P_inv = P.inv()
+sp.pprint(P_inv)
 
 print("\nP^{-1} A P:")
-D = P_inv * A * P
+D = (P_inv * A * P).applyfunc(sp.simplify)
 sp.pprint(D)

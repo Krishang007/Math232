@@ -1,6 +1,7 @@
 import numpy as np
 from fractions import Fraction
-from rref import rref# rref fucntion 
+from rref import rref# rref fucntion
+import sympy as sp 
 from gaussianElimination import gaussian_elimination# gaussian elimination function to compute the RREF of the matrix and show the steps of the process
 
 
