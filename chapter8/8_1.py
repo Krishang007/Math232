@@ -118,8 +118,8 @@ def orthogonal_diagonalize_symmetric(matrix_data, show_steps: bool = True):
 
 
 def main():
-    A = sp.Matrix([[6, 4,-8], [4, 0, -4],
-                   [-8, -4, 6]])
+    A = sp.Matrix([[5, -1, 1], [-1, 5, 1],
+                   [1, 1, 5]])
     orthogonal_diagonalize_symmetric(A, show_steps=True)
 
 

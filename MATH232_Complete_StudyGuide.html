@@ -1,0 +1,3216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATH 232 — Complete Study Guide</title>
+  <script>MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] }, options: { skipHtmlTags: ["script", "noscript", "style", "textarea"] } };</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0e1d3a;
+      --navy2: #1a3262;
+      --ink: #1c1c22;
+      --ink2: #3a3a48;
+      --ink3: #6a6a80;
+      --paper: #f8f7f3;
+      --p2: #efede7;
+      --p3: #e3e0d8;
+      --white: #fff;
+      --rule: #d8d6cc;
+      --red: #b02828;
+      --teal: #0b7060;
+      --green: #166030;
+      --blue: #1a5aa8;
+      --sol: #f0f9f4;
+      --solb: #2da05a;
+      --wb: #fffcee;
+      --wbb: #d4a017;
+      --ab: #e6f5ec;
+      --sb: 268px
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.68
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Lora", serif;
+      line-height: 1.25
+    }
+
+    strong {
+      font-weight: 600
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh
+    }
+
+    .sb {
+      width: var(--sb);
+      min-width: var(--sb);
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      flex-shrink: 0;
+      scrollbar-width: thin;
+      scrollbar-color: #253f70 transparent
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 2.5rem 2.8rem 6rem;
+      max-width: 900px
+    }
+
+    .sb-brand {
+      padding: 1.3rem 1.1rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .sb-name {
+      font-family: "Lora", serif;
+      font-size: 16px;
+      color: #eaf0ff;
+      line-height: 1.3;
+      margin-bottom: 3px
+    }
+
+    .sb-sub {
+      font-size: 10px;
+      color: #506898;
+      letter-spacing: .07em;
+      text-transform: uppercase
+    }
+
+    .sb-prog {
+      padding: .8rem 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .sb-pl {
+      font-size: 11px;
+      color: #506898;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between
+    }
+
+    .sb-pb {
+      background: #162845;
+      border-radius: 4px;
+      height: 5px;
+      overflow: hidden
+    }
+
+    .sb-pf {
+      height: 100%;
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      border-radius: 4px;
+      transition: width .5s;
+      width: 0%
+    }
+
+    .sb-srch {
+      padding: .7rem 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .sb-srch input {
+      width: 100%;
+      background: #162845;
+      border: 1px solid #253f70;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: #c8d8f0;
+      outline: none;
+      font-family: "DM Sans", sans-serif
+    }
+
+    .sb-srch input:focus {
+      border-color: #3a6ab0
+    }
+
+    .sb-srch input::placeholder {
+      color: #405070
+    }
+
+    .sb-stats {
+      margin: .7rem 1.1rem;
+      background: #111e35;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem
+    }
+
+    .sb-sn {
+      font-size: 19px;
+      font-weight: 600;
+      color: #c8d8f0;
+      font-family: "Lora", serif;
+      text-align: center
+    }
+
+    .sb-sl {
+      font-size: 10px;
+      color: #405070;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      text-align: center
+    }
+
+    .sb-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #374f70;
+      padding: .75rem 1.1rem .25rem
+    }
+
+    .sbl {
+      display: block;
+      padding: .3rem 1.1rem;
+      font-size: 12.5px;
+      color: #7a94be;
+      border-left: 2px solid transparent;
+      cursor: pointer;
+      transition: all .13s
+    }
+
+    .sbl:hover {
+      color: #c8d8f0;
+      background: rgba(255, 255, 255, .04);
+      border-left-color: #3a6ab0
+    }
+
+    .sbl.active {
+      color: #f0f6ff;
+      background: rgba(255, 255, 255, .07);
+      border-left-color: #e74c3c;
+      font-weight: 500
+    }
+
+    .sbs {
+      display: block;
+      padding: .2rem 1.1rem .2rem 2rem;
+      font-size: 11.5px;
+      color: #506080;
+      cursor: pointer;
+      transition: color .13s
+    }
+
+    .sbs:hover {
+      color: #8aadcc
+    }
+
+    .sb-btn {
+      display: block;
+      margin: .35rem 1.1rem;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 6px;
+      color: #8aadcc;
+      font-size: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all .14s
+    }
+
+    .sb-btn:hover {
+      background: rgba(255, 255, 255, .13);
+      color: #c8d8f0
+    }
+
+    .hero {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--rule)
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .5rem
+    }
+
+    .hero h1 {
+      font-size: 33px;
+      color: var(--ink);
+      margin-bottom: .6rem
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal)
+    }
+
+    .hero p {
+      font-size: 14.5px;
+      color: var(--ink3);
+      max-width: 600px;
+      margin-bottom: 1rem
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: .75rem
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500
+    }
+
+    .pp {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fcd34d
+    }
+
+    .pa {
+      background: #dbeafe;
+      color: #1e3a8a;
+      border: 1px solid #93c5fd
+    }
+
+    .pb {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7
+    }
+
+    .pc {
+      background: #fce7f3;
+      color: #831843;
+      border: 1px solid #f9a8d4
+    }
+
+    .pd {
+      background: #ede9fe;
+      color: #4c1d95;
+      border: 1px solid #c4b5fd
+    }
+
+    .phi {
+      background: #fdecea;
+      color: #b52a2a;
+      border: 1px solid #f5a5a5
+    }
+
+    .pme {
+      background: #fff0e6;
+      color: #b55010;
+      border: 1px solid #fbb97a
+    }
+
+    .chapter {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 1.5rem
+    }
+
+    .ch-hdr {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--rule)
+    }
+
+    .ch-n {
+      font-family: "Lora", serif;
+      font-size: 50px;
+      line-height: 1;
+      color: var(--p3);
+      flex-shrink: 0;
+      margin-top: -6px;
+      user-select: none
+    }
+
+    .ch-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 2px
+    }
+
+    .ch-title {
+      font-family: "Lora", serif;
+      font-size: 22px;
+      color: var(--ink);
+      margin-bottom: 4px
+    }
+
+    .ch-desc {
+      font-size: 13px;
+      color: var(--ink3)
+    }
+
+    .sec {
+      scroll-margin-top: 1.5rem
+    }
+
+    .sec-t {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy2);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 5px;
+      margin: 1.2rem 0 1rem
+    }
+
+    .ft {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden
+    }
+
+    .ft th {
+      background: var(--navy);
+      color: #c8d8f0;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 500
+    }
+
+    .ft td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--p3)
+    }
+
+    .ft tr:last-child td {
+      border-bottom: none
+    }
+
+    .ft tr:nth-child(even) td {
+      background: var(--p2)
+    }
+
+    .dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 2px
+    }
+
+    .dhi {
+      background: var(--red)
+    }
+
+    .dme {
+      background: #b55010
+    }
+
+    .dlo {
+      background: var(--green)
+    }
+
+    .fb {
+      background: #e8f0fc;
+      border: 1px solid #b0ccf0;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem
+    }
+
+    .fb h4 {
+      font-family: "Lora", serif;
+      font-size: 14px;
+      color: var(--blue);
+      margin-bottom: .5rem
+    }
+
+    .fb .f {
+      font-size: 13.5px;
+      line-height: 2.1
+    }
+
+    .qc {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      margin-bottom: .9rem;
+      overflow: hidden;
+      transition: box-shadow .2s
+    }
+
+    .qc:hover {
+      box-shadow: 0 3px 16px rgba(15, 31, 61, .09)
+    }
+
+    .qch {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+      background: var(--p2);
+      border-bottom: 1px solid var(--rule);
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .qcsrc {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy2)
+    }
+
+    .tags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 400
+    }
+
+    .thi {
+      background: #fdecea;
+      color: var(--red);
+      border: 1px solid #f5bcbc
+    }
+
+    .tme {
+      background: #fff0e6;
+      color: #b55010;
+      border: 1px solid #f5c9a0
+    }
+
+    .tt {
+      background: #e8f0fc;
+      color: var(--blue);
+      border: 1px solid #a5c5f0
+    }
+
+    .tp {
+      background: var(--p3);
+      color: var(--ink2);
+      border: 1px solid var(--rule)
+    }
+
+    .qcb {
+      padding: 12px 15px
+    }
+
+    .pts {
+      font-size: 11.5px;
+      color: var(--ink3);
+      font-style: italic;
+      float: right;
+      margin-left: 8px
+    }
+
+    .q {
+      font-size: 14px;
+      line-height: 1.75
+    }
+
+    .q p {
+      margin-bottom: .4rem
+    }
+
+    details.sol {
+      margin-top: 10px;
+      border-radius: 8px;
+      overflow: hidden
+    }
+
+    details.sol summary {
+      cursor: pointer;
+      background: var(--sol);
+      border: 1px solid var(--solb);
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .14s
+    }
+
+    details.sol summary::-webkit-details-marker {
+      display: none
+    }
+
+    details.sol summary::before {
+      content: "\25B6";
+      font-size: 10px;
+      transition: transform .2s;
+      display: inline-block
+    }
+
+    details.sol[open] summary::before {
+      transform: rotate(90deg)
+    }
+
+    details.sol summary:hover {
+      background: #e4f6ea
+    }
+
+    details.sol[open] summary {
+      border-radius: 8px 8px 0 0
+    }
+
+    .sb2 {
+      border: 1px solid var(--solb);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 12px 15px;
+      background: var(--white);
+      font-size: 13.5px;
+      line-height: 1.8
+    }
+
+    .step {
+      margin: 8px 0;
+      padding-left: 13px;
+      border-left: 3px solid #9dd4b0
+    }
+
+    .step:first-child {
+      margin-top: 0
+    }
+
+    .ans {
+      background: var(--ab);
+      border: 1px solid var(--solb);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 8px;
+      font-weight: 500
+    }
+
+    .note {
+      background: var(--wb);
+      border-left: 4px solid var(--wbb);
+      padding: 7px 12px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--ink2);
+      border-radius: 0 6px 6px 0
+    }
+
+    .div {
+      height: 1px;
+      background: var(--rule);
+      margin: 1.2rem 0
+    }
+
+    .sbox {
+      background: var(--navy);
+      color: #c8d8f0;
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      margin-top: 1.5rem;
+      font-size: 13.5px;
+      line-height: 1.85
+    }
+
+    .sbox h4 {
+      font-family: "Lora", serif;
+      color: #eaf0ff;
+      font-size: 15px;
+      margin-bottom: .6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      padding-bottom: .4rem
+    }
+
+    .si {
+      padding-left: 1em;
+      text-indent: -1em
+    }
+
+    .si::before {
+      content: "\2192  ";
+      color: #6ab0e8
+    }
+
+    .hidden {
+      display: none
+    }
+
+    @media print {
+      .sb {
+        display: none
+      }
+
+      .main {
+        max-width: 100%;
+        padding: 1rem
+      }
+
+      details.sol {
+        display: block
+      }
+
+      details.sol summary {
+        display: none
+      }
+
+      .sb2 {
+        display: block !important;
+        border-top: 1px solid var(--solb)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <nav class="sb" id="sb">
+      <div class="sb-brand">
+        <div class="sb-name">MATH 232<br>Study Guide</div>
+        <div class="sb-sub">SFU &middot; Spring 2026 &middot; All Chapters</div>
+      </div>
+      <div class="sb-prog">
+        <div class="sb-pl"><span>Solutions revealed</span><span id="pt">0/0</span></div>
+        <div class="sb-pb">
+          <div class="sb-pf" id="pf"></div>
+        </div>
+      </div>
+      <div class="sb-srch"><input type="text" id="srch" placeholder="Search questions&#x2026;"
+          oninput="doSearch(this.value)"></div>
+      <div class="sb-stats">
+        <div>
+          <div class="sb-sn">76</div>
+          <div class="sb-sl">Questions</div>
+        </div>
+        <div>
+          <div class="sb-sn">8</div>
+          <div class="sb-sl">Exams</div>
+        </div>
+        <div>
+          <div class="sb-sn">9</div>
+          <div class="sb-sl">Chapters</div>
+        </div>
+        <div>
+          <div class="sb-sn">100%</div>
+          <div class="sb-sl">Coverage</div>
+        </div>
+      </div>
+      <div class="sb-lbl">Part I &mdash; Vectors &amp; Systems</div>
+      <span class="sbl" onclick="go('ch1')">Ch 1 &middot; Euclidean Vector Spaces</span>
+      <span class="sbs" onclick="go('s11')">Vectors & Lines</span>
+      <span class="sbs" onclick="go('s12')">Length, Angles & Projections</span>
+      <span class="sbl" onclick="go('ch2')">Ch 2 &middot; Systems of Linear Equations</span>
+      <span class="sbs" onclick="go('s21')">Elimination & Rank</span>
+      <span class="sbs" onclick="go('s22')">Network Flows</span>
+      <div class="sb-lbl">Part II &mdash; Matrices &amp; Vector Spaces</div>
+      <span class="sbl" onclick="go('ch3')">Ch 3 &middot; Matrices &amp; Mappings</span>
+      <span class="sbs" onclick="go('s31')">Standard matrix & Geometry</span>
+      <span class="sbs" onclick="go('s32')">Inverses & Elementary Matrices</span>
+      <span class="sbl" onclick="go('ch4')">Ch 4 &middot; Vector Spaces &amp; Bases</span>
+      <span class="sbs" onclick="go('s41')">Subspaces & Spans</span>
+      <span class="sbs" onclick="go('s42')">Change of Basis & Coordinates</span>
+      <span class="sbl" onclick="go('ch5')">Ch 5 &middot; Determinants</span>
+      <div class="sb-lbl">Part III &mdash; Eigen &amp; Ortho</div>
+      <span class="sbl" onclick="go('ch6')">Ch 6 &middot; Eigen &amp; Diagonalization</span>
+      <span class="sbs" onclick="go('s61')">Diagonalization</span>
+      <span class="sbs" onclick="go('s62')">B-Matrices & Powers</span>
+      <span class="sbl" onclick="go('ch7')">Ch 7 &middot; Inner Products &amp; Proj</span>
+      <span class="sbs" onclick="go('s71')">Gram&ndash;Schmidt & W&#x22A5;</span>
+      <span class="sbs" onclick="go('s72')">Least Squares</span>
+      <span class="sbl" onclick=" go('ch8')">Ch 8 &middot; Symmetric &amp; SVD</span>
+      <div class="sb-lbl">Part IV &mdash; Appendix</div>
+      <span class="sbl" onclick="go('ch9')">Ch 9 &middot; Complex Numbers</span>
+      <span class="sbl" onclick="go('chF')" style="color: var(--thm); font-weight: 700;">📜 FINAL FORMULA SHEET</span>
+      <div class="sb-lbl">Tools</div>
+      <div class="sb-btn" onclick="openAll()">&#9660; Open All Solutions</div>
+      <div class="sb-btn" onclick="closeAll()">&#9650; Close All Solutions</div>
+      <div class="sb-btn" onclick="window.print()">&#128438; Print / Save PDF</div>
+    </nav>
+    <main class="main" id="main">
+
+      <div class="hero">
+        <div class="eyebrow">SFU MATH 232 &middot; Applied Linear Algebra &middot; Spring 2026</div>
+        <h1>MATH 232 Ultimate <em>Final Prep Guide</em></h1>
+        <p>Merged chronological study tool combining Midterm 1, Midterm 2, and Final Exam requirements. Chronological
+          concept flow synced to the official SFU curriculum. <strong>No cross product allowed.</strong></p>
+
+        <div class="sbox"
+          style="margin-top: 25px; background: rgba(52, 211, 153, 0.05); border: 1px solid rgba(52, 211, 153, 0.3); padding: 15px 20px;">
+          <h4 style="color: #34d399; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2em;">💪</span> Final Exam Readiness Checklist
+          </h4>
+          <p style="font-size: 0.9em; margin: 0 0 10px 0; color: #cbd5e1;">If you can solve these <strong>76 High-Yield
+              Questions</strong> independently, you are statistically primed for success:</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em;">
+            <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8;"><input type="checkbox" checked
+                readonly> RREF & Rank (Ch 1-2)</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8;"><input type="checkbox" checked
+                readonly> Basis & Coordinates (Ch 4)</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8;"><input type="checkbox" checked
+                readonly> Eigenvalues/Diag (Ch 6)</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #94a3b8;"><input type="checkbox" checked
+                readonly> SVD & Gram-Schmidt (Ch 7-8)</div>
+          </div>
+          <p style="margin-top: 10px; font-size: 0.8em; font-weight: 600; color: #34d399;">&check; 100% Curriculum
+            Coverage Confirmed (Chapters 1-9)</p>
+        </div>
+
+        <div class="pills"><span class="pill pa">Final A</span><span class="pill pb">Final B</span><span
+            class="pill pc">Final C</span><span class="pill pd">Final D</span><span class="pill pp">Practice
+            Final</span></div>
+        <div class="pills"><span class="pill phi">&#9733; HIGH YIELD</span><span class="pill pme">&#9679;
+            MEDIUM</span><span class="pill pd">FOUNDATIONAL Concepts</span></div>
+      </div>
+      <div class="chapter" id="ch1">
+        <div class="ch-hdr"
+          style="margin-bottom: 25px; background: rgba(96, 165, 250, 0.1); border-left: 5px solid var(--pa); padding: 15px 20px; border-radius: 4px;">
+          <div
+            style="font-weight: 800; color: var(--pa); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">
+            Part One: Vector Algebra and Systems of Equations</div>
+        </div>
+        <div class="ch-hdr">
+          <div class="ch-n">01</div>
+          <div>
+            <div class="ch-tag">Part I · Chapter 1</div>
+            <div class="ch-title">Euclidean Vector Spaces</div>
+            <div class="ch-desc">Vectors, dot products, norms, lines & planes, orthogonality, projections</div>
+          </div>
+        </div>
+        <table class="ft">
+          <tr>
+            <th>Subtopic</th>
+            <th>Content Coverage</th>
+            <th>Priority</th>
+          </tr>
+          <tr>
+            <td>Vector Ops & Properties</td>
+            <td>Algebraic (V1-V10) & Geometric</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Lines &amp; planes (general + vector eq.)</td>
+            <td>Vector, Parametric, & Point-Normal</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Length, Angles & Cauchy-Schwarz</td>
+            <td>Dot product, Norm, Distance, Angle θ</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Orthogonal Projection</td>
+            <td>Parallel & Perp components, Proj matrices</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+        </table>
+        <div class="fb">
+          <h4>Key Formulas — Ch 1</h4>
+          <div class="f">
+            <strong>Dot Product:</strong> \(\mathbf{u}\cdot\mathbf{v}=\sum u_i v_i\) &nbsp;|&nbsp;
+            <strong>Norm:</strong> \(\|\mathbf{v}\|=\sqrt{\mathbf{v}\cdot\mathbf{v}}\) &nbsp;|&nbsp;
+            <strong>Angle:</strong> \(\cos\theta=\frac{\mathbf{u}\cdot\mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}\)<br>
+            <strong>Line:</strong> \(\mathbf{x}(t)=\mathbf{p}+t\mathbf{v}\) &nbsp;|&nbsp; <strong>Plane
+              (Vector):</strong> \(\mathbf{x}=\mathbf{p}+s\mathbf{u}+t\mathbf{v}\) &nbsp;|&nbsp; <strong>Plane
+              (Normal):</strong> \(\mathbf{n}\cdot(\mathbf{x}-\mathbf{p})=0\)<br>
+            <strong>Properties:</strong> \(|\mathbf{u}\cdot\mathbf{v}| \le \|\mathbf{u}\|\|\mathbf{v}\|\) (Cauchy-S)
+            &nbsp;|&nbsp; \(\|\mathbf{u}+\mathbf{v}\| \le \|\mathbf{u}\|+\|\mathbf{v}\|\) (Triangle Ineq)<br>
+            <strong>Distance:</strong> \(d(\mathbf{u},\mathbf{v})=\|\mathbf{u}-\mathbf{v}\|\) &nbsp;|&nbsp;
+            <strong>Triangle Dist:</strong> \(d(\mathbf{u},\mathbf{v}) \le d(\mathbf{u},\mathbf{w}) +
+            d(\mathbf{w},\mathbf{v})\)
+          </div>
+        </div>
+        <div class="sbox">
+          <h4>Mastering the Method: Vectors & Lines</h4>
+          <div class="si"><strong>Find vector of magnitude 7 in opposite direction of v:</strong> (1) Normalize
+            \(\mathbf{u}=\mathbf{v}/\|\mathbf{v}\|\). (2) Negate and scale: \(\mathbf{w}=7(-\mathbf{u})\).</div>
+          <div class="si"><strong>Find 3rd vector in Orthonormal Set:</strong> Given \(\mathbf{w}_1, \mathbf{w}_2\),
+            find \(\mathbf{w}_3\) by solving \(\mathbf{w}_3\cdot\mathbf{w}_1=0\) and
+            \(\mathbf{w}_3\cdot\mathbf{w}_2=0\). Normalize result. (NO cross product!)</div>
+          <div class="si"><strong>Angle between planes:</strong> Use normal vectors \(\mathbf{n}_1, \mathbf{n}_2\).
+            \(\cos\theta = \frac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{\|\mathbf{n}_1\|\|\mathbf{n}_2\|}\).</div>
+          <div class="si"><strong>Plane containing Point P and Line L:</strong> (1) Get point \(Q\) and direction
+            \(\mathbf{d}\) from line. (2) Vector \(\mathbf{v}=PQ\). (3) Find normal \(\mathbf{n}\) perp to
+            \(\mathbf{d}\) and \(\mathbf{v}\) using 2x3 system. (4) Use \(\mathbf{n}\cdot(\mathbf{x}-P)=0\).</div>
+          <div class="si"><strong>Closest Point on Plane to Point Q:</strong> (1) Line through Q with normal
+            \(\mathbf{n}\): \(\mathbf{x}(t)=\mathbf{Q}+t\mathbf{n}\). (2) Intersection point of this line with plane is
+            the closest point. (3) <strong>Distance</strong> is \(|t|\|\mathbf{n}\|\).</div>
+        </div>
+        <div class="qc">
+          <div class="qch"><span class="qcsrc">Midterm 1 Summary Q2</span>
+            <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Magnitude</span><span
+                class="tag tt">Orthogonality</span></div>
+          </div>
+          <div class="qcb">
+            <div class="q">
+              <p><strong>(a)</strong> Let \(\mathbf{v} = (-1, -2, 3)\). Find \(\mathbf{w}\) of magnitude 4 in opposite
+                direction.</p>
+              <p><strong>(b)</strong> Find \(k\) such that \(\mathbf{u} = (1, k, 2)\) is orthogonal to \(\mathbf{v}\).
+                Find \(k\) so angle is 45°.</p>
+            </div>
+            <details class="sol">
+              <summary>Show Solution</summary>
+              <div class="sb2">
+                <div class="step"><strong>(a):</strong> \(\|\mathbf{v}\|=\sqrt{1+4+9}=\sqrt{14}\). \(\mathbf{w} =
+                  \frac{-4}{\sqrt{14}}(-1,-2,3) = (\frac{4}{\sqrt{14}}, \frac{8}{\sqrt{14}}, -\frac{12}{\sqrt{14}})\).
+                </div>
+                <div class="step"><strong>(b) Orthogonal:</strong> \(\mathbf{u}\cdot\mathbf{v} = -1-2k+6 = 0 \Rightarrow
+                  2k=5 \Rightarrow k=2.5\).</div>
+                <div class="step"><strong>Angle 45°:</strong> \(\cos(45^\circ) = \frac{5-2k}{\sqrt{5+k^2}\sqrt{14}} =
+                  \frac{1}{\sqrt{2}}\). Square both sides and solve for \(k\).</div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="qc">
+          <div class="qch"><span class="qcsrc">Midterm 1 Summary Q4b (Closest Point)</span>
+            <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Closest
+                Point</span><span class="tag tt">Projection</span></div>
+          </div>
+          <div class="qcb">
+            <div class="q">
+              <p>Find closest point on plane \(3x-2y+z=10\) to point \(Q(2,-2,1)\).</p>
+            </div>
+            <details class="sol">
+              <summary>Show Solution</summary>
+              <div class="sb2">
+                <div class="step">Normal \(\mathbf{n}=(3,-2,1)\). Line through Q:
+                  \(\mathbf{x}(t)=(2,-2,1)+t(3,-2,1) = (2+3t, -2-2t, 1+t)\).</div>
+                <div class="step">Plug into plane: \(3(2+3t)-2(-2-2t)+(1+t)=10 \Rightarrow 14t+11=10 \Rightarrow t =
+                  -1/14\).</div>
+                <div class="step">Closest point \(\mathbf{P} = (2-\frac{3}{14}, -2+\frac{2}{14}, 1-\frac{1}{14}) =
+                  (\frac{25}{14}, -\frac{26}{14}, \frac{13}{14})\).</div>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="sec" id="s11">
+          <div class="sec-t">1.1–1.3 — Lines & Planes</div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Simulation Q1 / Practice Guide Q20 (Calculations)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                  class="tag tt">Magnitude</span><span class="tag tt">Angle</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p><strong>(Q1ai)</strong> Find \(\mathbf{u}\) of magnitude 7 opposite to \(\mathbf{v}_1=(1,2,1)\).</p>
+                <p><strong>(Q1b)</strong> Find angle between planes \(2x+3y-z=1\) and \(x-2y+2z=4\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>Magnitude 7:</strong> \(\|\mathbf{v}_1\|=\sqrt{6}\). \(\mathbf{u} =
+                    \frac{-7}{\sqrt{6}}(1,2,1) = (-\frac{7}{\sqrt{6}}, -\frac{14}{\sqrt{6}}, -\frac{7}{\sqrt{6}})\).
+                  </div>
+                  <div class="step"><strong>Angle:</strong> \(\mathbf{n}_1=(2,3,-1), \mathbf{n}_2=(1,-2,2)\).
+                    \(\mathbf{n}_1\cdot\mathbf{n}_2 = 2-6-2 = -6\).</div>
+                  <div class="step">\(\|\mathbf{n}_1\|=\sqrt{14}, \|\mathbf{n}_2\|=3\). \(\cos\theta =
+                    \frac{|-6|}{3\sqrt{14}} = \frac{2}{\sqrt{14}}\). \(\theta = \cos^{-1}(\frac{2}{\sqrt{14}})\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Final C Q1 / Final B Q1</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Plane
+                  equations</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[3+3 pts]</span>
+              <div class="q">
+                <p>Find (a) a general equation and (b) a vector equation of the plane through \((2,1,3)\) perpendicular
+                  to \((1,1,1)\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>(a)</strong> Normal \(\mathbf{n}=(1,1,1)\), point \((2,1,3)\):
+                    \(1(x-2)+1(y-1)+1(z-3)=0\)</div>
+                  <div class="ans">\(x+y+z=6\)</div>
+                  <div class="step"><strong>(b)</strong> Two vectors perp to \(\mathbf{n}\): \(\mathbf{u}=(1,-1,0)\),
+                    \(\mathbf{v}=(1,0,-1)\).<br>\(\mathbf{x}=(2,1,3)+s(1,-1,0)+t(1,0,-1)\)</div>
+                  <div class="note"><strong>Pattern:</strong> General eq &rarr; use normal + point. Vector eq &rarr; two
+                    independent vectors in the plane (e.g. solve for null space of normal vector via dot product).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Final D Q7</span>
+              <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">Angle between
+                  planes</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[6 pts]</span>
+              <div class="q">
+                <p>Find the angle between planes \(x-y+z=5\) and \(x+y+2z=-3\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Normals: \(\mathbf{n}_1=(1,-1,1)\), \(\mathbf{n}_2=(1,1,2)\).
+                    \(\cos\theta=\frac{|1-1+2|}{\sqrt{3}\cdot\sqrt{6}}=\frac{2}{\sqrt{18}}=\frac{\sqrt{2}}{3}\)</div>
+                  <div class="ans">\(\theta=\arccos(\sqrt{2}/3)\approx61.9°\)</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Final D Q3</span>
+              <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">Line–plane
+                  intersection</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Line: \((x,y,z)=(1,1,1)+t(0,2,-1)\). Plane through \(P(1,0,-1)\), \(Q(0,1,-1)\), \(R(3,0,0)\).<br>(a)
+                  Two vectors parallel to plane. (b) General equation. (c) Intersection point.</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>(a)</strong> \(\overrightarrow{PQ}=(-1,1,0)\),
+                    \(\overrightarrow{PR}=(2,0,1)\).</div>
+                  <div class="step"><strong>(b)</strong> Normal \(\mathbf{n}=(a,b,c)\).
+                    \(\mathbf{n}\cdot\overrightarrow{PQ}=-a+b=0\Rightarrow a=b\).
+                    \(\mathbf{n}\cdot\overrightarrow{PR}=2a+c=0\Rightarrow c=-2a\). Let \(a=1\),
+                    \(\mathbf{n}=(1,1,-2)\). Through \(P(1,0,-1)\): \((x-1)+(y)-2(z+1)=0\Rightarrow x+y-2z=3\).</div>
+                  <div class="step"><strong>(c)</strong> Sub line: \((1)+(1+2t)-2(1-t)=3\Rightarrow4t=3\Rightarrow
+                    t=3/4\).</div>
+                  <div class="ans">Intersection: \((1,\,5/2,\,1/4)\)</div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="div"></div>
+        <div class="sec" id="s12">
+          <div class="sec-t">1.5 — Projection & Orthogonality</div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q2(a)(b) &amp; Final A Q9</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                  class="tag tt">Projection</span><span class="tag tt">Projection matrix</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[MCQ + 3+1+4 pts]</span>
+              <div class="q">
+                <p><strong>(Practice Q2a)</strong> Which \(\mathbf{w}\) makes \(\{(1,0,3),(2,1,0),\mathbf{w}\}\) an
+                  orthogonal basis? A)&nbsp;\((-3,6,1)\) B)&nbsp;\((-3,3,-1)\) C)&nbsp;\((0,0,1)\) D)&nbsp;\((0,-3,1)\)
+                </p>
+                <p><strong>(Practice Q2b)</strong> \(\mathbf{u}=(0,10,-1)\), \(\mathbf{v}=(1,2,2)\). Find
+                  \(\text{proj}_{\mathbf{v}}\mathbf{u}\).</p>
+                <p><strong>(Final A Q9)</strong> \(\mathbf{a}=(3,1,2)\), \(\mathbf{x}=(7,21,14)\). (a)
+                  \(\text{proj}_{\mathbf{a}}\mathbf{x}\). (b) Component of \(\mathbf{x}\) orthogonal to \(\mathbf{a}\).
+                  (c) 3&times;3 projection matrix onto span\(\{\mathbf{a}\}\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>Q2a:</strong> Check A: \((-3,6,1)\cdot(1,0,3)=0\,\checkmark\),
+                    \((-3,6,1)\cdot(2,1,0)=0\,\checkmark\). <strong>Answer A.</strong> (Shortcut: find null space of
+                    matrix with rows \(\mathbf{v}_1,\mathbf{v}_2\) to get \((-3,6,1)\).)</div>
+                  <div class="step"><strong>Q2b:</strong> \(\mathbf{u}\cdot\mathbf{v}=18\), \(\|\mathbf{v}\|^2=9\).
+                    \(\text{proj}=2(1,2,2)=(2,4,4)\). <strong>Answer A.</strong></div>
+                  <div class="step"><strong>Q9(a):</strong> \(\mathbf{x}\cdot\mathbf{a}=70\), \(\|\mathbf{a}\|^2=14\).
+                    \(\text{proj}=5(3,1,2)=(15,5,10)\).</div>
+                  <div class="step"><strong>Q9(b):</strong> \(\mathbf{x}-\text{proj}=(7-15,21-5,14-10)=(-8,16,4)\).
+                  </div>
+                  <div class="step"><strong>Q9(c):</strong>
+                    \(P=\frac{1}{14}\begin{bmatrix}9&3&6\\3&1&2\\6&2&4\end{bmatrix}\)</div>
+                  <div class="note"><strong>Formula:</strong> projection matrix = aa&#7488;/(a&#7488;a). For subspace: P
+                    = A(A&#7488;A)&#8315;&#185;A&#7488;.</div>
+                </div>
+              </details>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 2 Q1 (Projection in R^4)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Projection</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Determine \(\text{proj}_{\mathbf{v}}(\mathbf{u})\) for \(\mathbf{v} = (2,0,1,2)\) and
+                      \(\mathbf{u} = (-1,2,-1,2)\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">\(\mathbf{u} \cdot \mathbf{v} = (-1)(2) + (2)(0) + (-1)(1) + (2)(2) = 1\).</div>
+                      <div class="step">\(\|\mathbf{v}\|^2 = 2^2 + 0^2 + 1^2 + 2^2 = 9\).</div>
+                      <div class="ans">\(\text{proj}_{\mathbf{v}}\mathbf{u} = \frac{1}{9}(2,0,1,2) = (2/9, 0, 1/9,
+                        2/9)\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" id="ch2">
+        <div class="ch-hdr">
+          <div class="ch-n">02</div>
+          <div>
+            <div class="ch-tag">Part I · Chapter 2</div>
+            <div class="ch-title">Systems of Linear Equations</div>
+            <div class="ch-desc">Gaussian elimination, RREF, rank, nullity, consistency, free variables, applications
+            </div>
+          </div>
+        </div>
+        <table class="ft">
+          <tr>
+            <th>Subtopic</th>
+            <th>Goal</th>
+            <th>Priority</th>
+          </tr>
+          <tr>
+            <td>Gaussian Elimination</td>
+            <td>Reduce [A|b] to REF/RREF</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Rank & Consistency</td>
+            <td>Analyze solutions (0, 1, ∞)</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Rank-Nullity Theorem</td>
+            <td>rank + nullity = #columns</td>
+            <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+          </tr>
+          <tr>
+            <td>Network Flows</td>
+            <td>Solve large systems with free variables</td>
+            <td><span class="dot dme"></span><span class="dot dme"></span> MEDIUM</td>
+          </tr>
+        </table>
+        <div class="fb">
+          <h4>Key Theorems — Ch 2</h4>
+          <div class="f">
+            <strong>Nature of Solutions:</strong> Exactly one, Infinitely many, or No solution (Inconsistent).<br>
+            <strong>Rank-Nullity:</strong> \(\text{rank}(A)+\text{nullity}(A)=n\) (#cols) &nbsp;|&nbsp;
+            <strong>Nullity:</strong> # of free variables.<br>
+            <strong>Consistency:</strong> \(Ax=\mathbf{b}\) is consistent \(\Leftrightarrow
+            \text{rank}(A)=\text{rank}([A|\mathbf{b}])\).<br>
+            <strong>Homogeneous:</strong> \(Ax=\mathbf{0}\) always consistent (\(\mathbf{x}=\mathbf{0}\)). Non-trivial
+            sol iff \(\text{rank}(A) < n\). </div>
+          </div>
+          <div class="sbox">
+            <h4>Mastering the Method: Systems Mastery</h4>
+            <div class="si"><strong>Determine Unique/No/Many Solutions:</strong> Row reduce [A|b] to REF. (1) <strong>No
+                solution:</strong> row [0 0 ... 0 | c] where c≠0. (2) <strong>Unique:</strong> every column has a pivot
+              (no free variables). (3) <strong>Many:</strong> at least one free variable.</div>
+            <div class="si"><strong>Vector Form Solution:</strong> Express basic variables in terms of free variables
+              (parameters \(s, t\)). Write \(\mathbf{x} = \mathbf{x}_p + s\mathbf{v}_1 + t\mathbf{v}_2\).</div>
+            <div class="si"><strong>Testing Linear Independence:</strong> Set up \(Ac=\mathbf{0}\). Independent iff only
+              trivial solution (\(\text{rank}=k\)). Dependent iff rank < k (free vars exist).</div>
+                <div class="si"><strong>Maximal Independent Subset:</strong> Place vectors as columns of A, row reduce.
+                  Pivot columns of ORIGINAL A form the largest independent set.</div>
+                <div class="si"><strong>Polynomial Interpolation (Ch 2 App):</strong> To find cubic \(ax^3+bx^2+cx+d=y\)
+                  through points, set up a system of equations by plugging in each \((x,y)\). Solve the resulting
+                  augmented matrix for \([a,b,c,d]\).</div>
+                <div class="si"><strong>Parameter Analysis (a, b):</strong> Row reduce until you have a row like \([0
+                  \dots (\text{expr1}) | (\text{expr2})]\). (1) <strong>No sol:</strong> expr1=0 and expr2≠0. (2)
+                  <strong>Many sol:</strong> expr1=0 and expr2=0. (3) <strong>Unique:</strong> expr1≠0.
+                </div>
+            </div>
+            <div class="sec" id="s21">
+              <div class="sec-t">2.1–2.2 — RREF, Rank & Consistency</div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Summary Q1 (System with Parameter c)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Parameters</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>\(x + y - z = 1\), \(2x + 3y + cz = 3\), \(x + cy + 3z = 2\). Find \(c\) for (b) Unique, (c)
+                      Inconsistent, (d) Many solutions.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Augmented matrix:
+                        \(\begin{bmatrix}1&1&-1&1\\2&3&c&3\\1&c&3&2\end{bmatrix} \xrightarrow{R_2-2R_1, R_3-R_1}
+                        \begin{bmatrix}1&1&-1&1\\0&1&c+2&1\\0&c-1&4&1\end{bmatrix} \xrightarrow{R_3-(c-1)R_2}
+                        \begin{bmatrix}1&1&-1&1\\0&1&c+2&1\\0&0&-(c^2+c-6)&2-c\end{bmatrix}\).</div>
+                      <div class="step">Pivot in row 3: \(-(c^2+c-6) = -(c+3)(c-2)\). RHS of row 3: \(2-c\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 2 Q2 (Inconsistent System)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Consistency</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Solve: \(x_1+4x_2+6x_3+9x_4=1\), \(2x_1+3x_2+7x_3+3x_4=2\), \(-2x_1+x_2-3x_3+9x_4=1\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Augmented matrix:
+                        \(\begin{bmatrix}1&4&6&9&1\\2&3&7&3&2\\-2&1&-3&9&1\end{bmatrix} \xrightarrow{R_2-2R_1, R_3+2R_1}
+                        \dots \xrightarrow{R_3-R_2} \begin{bmatrix}1&4&6&9&1\\0&-5&-5&-15&0\\0&0&0&0&3\end{bmatrix}\).
+                      </div>
+                      <div class="ans">Row 3 is \([0 0 0 0 | 3]\). <strong>Inconsistent. No solutions.</strong></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Exam Q2 (RREF & General Solution)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">RREF</span><span
+                      class="tag tt">General Solution</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>(a)</strong> Find RREF of \(\begin{bmatrix}-1&1&3\\4&-1&-9\\-3&-3&3\end{bmatrix}\).</p>
+                    <p><strong>(b)</strong> Find general solution for augmented RREF
+                      \(\begin{bmatrix}1&2&0&-1&4\\0&0&1&-3&5\end{bmatrix}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a):</strong> Row reduce to get
+                        \(\begin{bmatrix}1&0&-2\\0&1&1\\0&0&0\end{bmatrix}\).</div>
+                      <div class="step"><strong>(b):</strong> Basic variables \(x_1, x_3\). Free variables \(x_2=s,
+                        x_4=t\). From rows:<br>
+                        \(x_1 = 4 - 2s + t\)<br>
+                        \(x_3 = 5 + 3t\)</div>
+                      <div class="ans">Vector form: \(\mathbf{x} = \begin{bmatrix}4\\0\\5\\0\end{bmatrix} + s
+                        \begin{bmatrix}-2\\1\\0\\0\end{bmatrix} + t \begin{bmatrix}1\\0\\3\\1\end{bmatrix}\)</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Q8 (Consistency + solution set)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Consistency</span><span class="tag tt">Solution set</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>\(A=\begin{bmatrix}1&-2&-1\\2&0&2\\1&1&2\end{bmatrix}\), RREF
+                      \(R=\begin{bmatrix}1&0&1\\0&1&1\\0&0&0\end{bmatrix}\), \(\mathbf{b}=(3,1,t)^T\). Find all \(t\)
+                      making \(A\mathbf{x}=\mathbf{b}\) consistent and write the solution set.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Apply same row ops to <b>b</b>: after full reduction, row 3 becomes [0 0 0 |
+                        t−5].</div>
+                      <div class="step">Consistent \(\Leftrightarrow t-5=0\Rightarrow\) <strong>\(t=5\)</strong>.</div>
+                      <div class="step">Solution (\(x_3=s\) free): from RREF rows \(x_1=3-s\), \(x_2=\text{?}-s\). Write
+                        as \(\hat{\mathbf{x}}+s(-1,-1,1)^T\).</div>
+                      <div class="note"><strong>Pattern:</strong> Always augment [A|b], apply same row ops, set zero-row
+                        RHS = 0 for consistency condition.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Q3(a) / Final A Q6 T/F / Final B Q3(a)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Rank-Nullity</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>(Practice Q3a)</strong> 4&times;5 matrix, dim(col) = 3. Find dim(null).</p>
+                    <p><strong>(Final A Q3b)</strong> 4&times;7 matrix rank 3. Zero rows in any REF?</p>
+                    <p><strong>(Final A Q6 T/F)</strong> 4&times;5 matrix rank 3 &Rightarrow; solution has 2 parameters.
+                      True/False?</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>Q3a:</strong> nullity \(=5-3=\mathbf{2}\). Answer B.</div>
+                      <div class="step"><strong>Final A Q3b:</strong> zero rows \(=4-3=\mathbf{1}\).</div>
+                      <div class="step"><strong>T/F:</strong> nullity \(=5-3=2\) free variables. <strong>True.</strong>
+                      </div>
+                      <div class="note"><strong>Rank-Nullity appears on EVERY exam.</strong> nullity = #cols &minus;
+                        rank.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final D Q2 (Homogeneous system, null space basis)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">RREF</span><span
+                      class="tag tt">Null space</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[2+4+2 pts]</span>
+                  <div class="q">
+                    <p>\(x_1+3x_2+4x_3=0\), \(2x_1+2x_3=0\), \(-x_2-x_3=0\). (a) Matrices. (b) RREF. (c) Basis for null
+                      space.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(b)</strong> RREF of
+                        \(\begin{bmatrix}1&3&4\\2&0&2\\0&-1&-1\end{bmatrix}=\begin{bmatrix}1&0&1\\0&1&1\\0&0&0\end{bmatrix}\)
+                      </div>
+                      <div class="step"><strong>(c)</strong> \(x_3=s\) free, \(x_1=-s\), \(x_2=-s\). Solution:
+                        \(s(-1,-1,1)\).</div>
+                      <div class="ans">Basis for null space: \(\{(-1,-1,1)\}\}</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <div class="div"></div>
+            <div class="sec" id="s22">
+              <div class="sec-t">2.4 — Applications</div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Exam Q5 (Network Flow - Pipe System)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Network
+                      flow</span>
+                  </div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Consider the pipe network with flow rates \(x_1 \dots x_5\). Write the system of linear equations
+                      for nodes A, B, C, D given flows (20, 35, 40, 25).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Node A: \(x_1 + x_4 = 20\)<br>
+                        Node B: \(x_1 - x_2 + x_5 = 35\)<br>
+                        Node C: \(x_3 + x_5 = 40\)<br>
+                        Node D: \(x_2 + x_3 + x_4 = 25\)</div>
+                      <div class="ans">Augmented matrix:
+                        \(\begin{bmatrix}1&0&0&1&0&20\\1&-1&0&0&1&35\\0&0&1&0&1&40\\0&1&1&1&0&25\end{bmatrix}\)
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chapter" id="ch3">
+            <div class="ch-hdr"
+              style="margin-bottom: 25px; background: rgba(94, 234, 212, 0.1); border-left: 5px solid var(--pb); padding: 15px 20px; border-radius: 4px;">
+              <div
+                style="font-weight: 800; color: var(--pb); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">
+                Part Two: Matrices, Linear Mappings, and Vector Spaces</div>
+            </div>
+            <div class="ch-hdr">
+              <div class="ch-n">03</div>
+              <div>
+                <div class="ch-tag">Part II &middot; Chapter 3</div>
+                <div class="ch-title">Matrices, Linear Mappings, and Inverses</div>
+                <div class="ch-desc">Standard matrix of T, geometric transformations, arithmetic, inverses, & elementary
+                  matrices</div>
+              </div>
+            </div>
+            <table class="ft">
+              <tr>
+                <th>Subtopic</th>
+                <th>Goal</th>
+                <th>Priority</th>
+              </tr>
+              <tr>
+                <td>Standard Matrix [T]</td>
+                <td>[T(\mathbf{e}_1) ... T(\mathbf{e}_n)]</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Geometric Transforms</td>
+                <td>Rotations, Reflections, Shears, Scales</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Matrix Arithmetic</td>
+                <td>(AB)^T = B^T A^T, Associativity</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Inverses (2x2 & nxn)</td>
+                <td>ad-bc shortcut & [A|I] method</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+            </table>
+            <div class="fb">
+              <h4>Key Formulas — Ch 3</h4>
+              <div class="f">
+                <strong>Standard Matrix:</strong>
+                \([T]=[\;T(\mathbf{e}_1)\;\;T(\mathbf{e}_2)\;\;\cdots\;\;T(\mathbf{e}_n)\;]\) &nbsp;|&nbsp;
+                <strong>Composition:</strong> \([L\circ T]=[L][T]\)<br>
+                <strong>2x2 Inverse:</strong> \(A=\begin{bmatrix}a&b\\c&d\end{bmatrix} \Rightarrow
+                A^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}\) &nbsp;|&nbsp; <strong>Transpose:</strong>
+                \((AB)^T=B^T A^T\)<br>
+                <strong>Rotation \(\theta\):</strong> \(\begin{bmatrix}\cos\theta &-\sin\theta\\\sin\theta &
+                \cos\theta\end{bmatrix}\) &nbsp;|&nbsp; <strong>Reflection (y=x):</strong>
+                \(\begin{bmatrix}0&1\\1&0\end{bmatrix}\) &nbsp;|&nbsp; <strong>Shear (H):</strong>
+                \(\begin{bmatrix}1&k\\0&1\end{bmatrix}\)
+              </div>
+            </div>
+            <div class="sbox">
+              <h4>Mastering the Method: Matrices & Transforms</h4>
+              <div class="si"><strong>Find Standard Matrix [T]:</strong> Apply T to standard basis vectors
+                \(\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3, \mathbf{e}_4\). Place results as columns of [T].
+                <strong>Domain</strong> is \(\mathbb{R}^{\text{#cols}}\), <strong>Codomain</strong> is
+                \(\mathbb{R}^{\text{#rows}}\).
+              </div>
+              <div class="si"><strong>Line of Intersection of two planes:</strong> Row reduce the system of two plane
+                equations: \(\begin{bmatrix}\mathbf{n}_1 & d_1\\ \mathbf{n}_2 & d_2\end{bmatrix}\). Solve for basic
+                variables in terms of free variable \(t\). Result: \(\mathbf{x}=\mathbf{p}+t\mathbf{v}\).</div>
+              <div class="si"><strong>Closest Point on Plane to Point Q:</strong> (1) Construct normal line through Q:
+                \(\mathbf{x}(t)=\mathbf{Q}+t\mathbf{n}\). (2) Substitute \(\mathbf{x}(t)\) into plane \(Ax+By+Cz=D\).
+                (3) Solve for \(t\) and plug back into line.</div>
+              <div class="si"><strong>Angle between planes:</strong> Identify normal vectors \(\mathbf{n}_1,
+                \mathbf{n}_2\) from coefficients. Compute \(\cos\theta = \frac{|\mathbf{n}_1 \cdot
+                \mathbf{n}_2|}{\|\mathbf{n}_1\| \|\mathbf{n}_2\|}\).</div>
+            </div>
+            <div class="sec" id="s31">
+              <div class="sec-t">3.1 — Standard Matrix & Matrix Algebra</div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Exam MC6 + Midterm 2 Exam MC1</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Matrix
+                      product</span><span class="tag tt">Inverse</span></div>
+                </div>
+                <div class="qcb">
+                  <p><strong>(MT1 MC6):</strong> \(A = \begin{bmatrix}1&2\\-1&0\end{bmatrix}, B =
+                    \begin{bmatrix}3&1\\2&1\end{bmatrix}\). Compute \(AB\).</p>
+                  <p><strong>(MT2 MC1):</strong> \(A = \begin{bmatrix}3&1\\5&2\end{bmatrix}\). Find \(A^{-1}\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(MT1 MC6):</strong> \(AB = \begin{bmatrix}1(3)+2(2) & 1(1)+2(1) \\
+                      -1(3)+0(2) & -1(1)+0(1)\end{bmatrix} = \begin{bmatrix}7&3\\-3&-1\end{bmatrix}\). <strong>Answer
+                        D.</strong></div>
+                    <div class="step"><strong>(MT2 MC1):</strong> \(\det(A)=3(2)-5(1)=1\). \(A^{-1} =
+                      \frac{1}{1}\begin{bmatrix}2&-1\\-5&3\end{bmatrix}\). <strong>Answer A.</strong></div>
+                  </div>
+                </details>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 3 Q1 (Matrix Products)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Matrix
+                      Algebra</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Let \(A\) be \(2\times 3\) and \(C\) be \(2\times 2\). Is \(AC\) or \(CA\) defined? Compute
+                      \(CA\) if \(A = \begin{bmatrix} 6 & 3 & 3 \\ 1 & 2 & 3 \end{bmatrix}\) and \(C = \begin{bmatrix} 2
+                      & 0 \\ -1 & 3 \end{bmatrix}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Sizes: \(A: 2\times 3, C: 2\times 2\). \(AC\) undefined (\(3\neq 2\)). \(CA\)
+                        defined (\(2=2\)).</div>
+                      <div class="ans">\(CA = \begin{bmatrix} 2 & 0 \\ -1 & 3 \end{bmatrix}\begin{bmatrix} 6 & 3 & 3 \\
+                        1 & 2 & 3 \end{bmatrix} = \begin{bmatrix} 12 & 6 & 6 \\ -3 & 3 & 6 \end{bmatrix}\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 5 Q1 (Matrix Equation AX=B)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Matrix
+                      Equation</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Solve \(\begin{bmatrix} 3 & 1 \\ 5 & 2 \end{bmatrix}X = \begin{bmatrix} 1 & 0 \\ 1 & 1
+                      \end{bmatrix}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">\(X = A^{-1}B = \begin{bmatrix} 2 & -1 \\ -5 & 3 \end{bmatrix}\begin{bmatrix} 1
+                        & 0 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} 1 & -1 \\ -2 & 3 \end{bmatrix}\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 2 Exam MC4</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Inverse
+                      Mapping</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Let \(T: \mathbb{R}^2 \to \mathbb{R}^2\) be invertible with matrix \(A\). If \(T(1,2) = (3,4)\)
+                      and \(T(0,1) = (1,2)\), what is \(T^{-1}(3,4)\)?</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">By definition of inverse: if \(T(\mathbf{x}) = \mathbf{y}\), then
+                        \(T^{-1}(\mathbf{y}) = \mathbf{x}\).</div>
+                      <div class="ans">Since \(T(1,2) = (3,4)\), \(T^{-1}(3,4) = (1,2)\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Exam Q4 (Rotation & Composition)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Rotation</span><span class="tag tt">Composition</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>(a)</strong> Standard matrix of \(T\) (CCW rotation by \(\pi/4\)).</p>
+                    <p><strong>(b)</strong> Compute \(T(1,2)\).</p>
+                    <p><strong>(c)</strong> Matrix of \(S \circ T\) where \([S] =
+                      \begin{bmatrix}1&1\\0&1\end{bmatrix}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a):</strong> \([T] =
+                        \begin{bmatrix}\cos(\pi/4)&-\sin(\pi/4)\\\sin(\pi/4)&\cos(\pi/4)\end{bmatrix} =
+                        \frac{1}{\sqrt{2}}\begin{bmatrix}1&-1\\1&1\end{bmatrix}\).</div>
+                      <div class="step"><strong>(b):</strong> \(T(1,2) =
+                        \frac{1}{\sqrt{2}}\begin{bmatrix}1&-1\\1&1\end{bmatrix}\begin{bmatrix}1\\2\end{bmatrix} =
+                        \frac{1}{\sqrt{2}}\begin{bmatrix}-1\\3\end{bmatrix}\).</div>
+                      <div class="step"><strong>(c):</strong> \([S \circ T] = [S][T] =
+                        \begin{bmatrix}1&1\\0&1\end{bmatrix} \cdot
+                        \frac{1}{\sqrt{2}}\begin{bmatrix}1&-1\\1&1\end{bmatrix} =
+                        \frac{1}{\sqrt{2}}\begin{bmatrix}2&0\\1&1\end{bmatrix}\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sec-t">3.2–3.3 — Standard Matrix & Geometric Transformations</div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Q7 &amp; Final A Q4(a–f)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Standard
+                      matrix</span><span class="tag tt">Inverse transform</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>\(T(x_1,x_2,x_3)=(x_1+x_3,\,x_2-x_3,\,x_1-x_2+x_3)\).<br>
+                      (a) Domain. (b) Codomain. (c) \(T(1,2,3)\). (d) \([T]\). (e) \([T^{-1}]\). (f) Vector giving
+                      output \((2,3,2)\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a)</strong> \(\mathbb{R}^3\) &nbsp;<strong>(b)</strong>
+                        \(\mathbb{R}^3\)</div>
+                      <div class="step"><strong>(c)</strong> \((1+3,\,2-3,\,1-2+3)=(4,-1,2)\). <strong>Answer
+                          A.</strong></div>
+                      <div class="step"><strong>(d)</strong> \(T(\mathbf{e}_1)=(1,0,1)\), \(T(\mathbf{e}_2)=(0,1,-1)\),
+                        \(T(\mathbf{e}_3)=(1,-1,1)\).<br>\([T]=\begin{bmatrix}1&0&1\\0&1&-1\\1&-1&1\end{bmatrix}\)</div>
+                      <div class="step"><strong>(e)</strong> \(\det[T]=-1\neq0\). Row reduce \([[T]|I_3]\):
+                        \([T]^{-1}=\begin{bmatrix}0&1&1\\1&0&-1\\1&-1&-1\end{bmatrix}\)</div>
+                      <div class="step"><strong>(f)</strong> \(\mathbf{v}=[T]^{-1}(2,3,2)^T=(5,0,-3)\).</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final A Q4 / Final C Q4(a–d)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Rotation</span><span class="tag tt">Shear</span><span
+                      class="tag tt">Composition</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[2+2+2+4 pts]</span>
+                  <div class="q">
+                    <p>\(T_1\): rotate \(\mathbb{R}^2\) CCW by \(\pi/2\). \(T_2\): horizontal shear by 2.<br>
+                      (a) \([T_1]\). (b) \([T_2]\). (c) \([T_2\circ T_1]\). (d) Eigenvalues &amp; eigenvectors of
+                      result.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a)</strong> \([T_1]=\begin{bmatrix}0&-1\\1&0\end{bmatrix}\) &nbsp;
+                        <strong>(b)</strong> \([T_2]=\begin{bmatrix}1&2\\0&1\end{bmatrix}\)
+                      </div>
+                      <div class="step"><strong>(c)</strong>
+                        \([T_2][T_1]=\begin{bmatrix}1&2\\0&1\end{bmatrix}\begin{bmatrix}0&-1\\1&0\end{bmatrix}=\begin{bmatrix}2&-1\\1&0\end{bmatrix}\)
+                      </div>
+                      <div class="step"><strong>(d)</strong>
+                        \(\det\begin{bmatrix}2-\lambda&-1\\1&-\lambda\end{bmatrix}=(\lambda-1)^2=0\). Eigenvalue
+                        \(\lambda=1\) (repeated).<br>Eigenvector: \(\mathbf{v}=(1,1)\). Only one independent
+                        &Rightarrow; <strong>not diagonalizable</strong>.</div>
+                      <div class="note">Rotation matrices: use [[cos θ, -sin θ],[sin θ, cos θ]]. Composition: multiply
+                        matrices right-to-left.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <div class="div"></div>
+            <div class="sec" id="s32">
+              <div class="sec-t">3.4–3.5 — Inverses, Elementary Matrices & Subspaces</div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final D Q4 (Elementary matrices)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Elementary
+                      matrices</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[2+3+3+2 pts]</span>
+                  <div class="q">
+                    <p>\(A=E_1E_2E_3\), \(E_1=\begin{bmatrix}1&2\\0&1\end{bmatrix}\),
+                      \(E_2=\begin{bmatrix}0&1\\1&0\end{bmatrix}\), \(E_3=\begin{bmatrix}3&0\\0&1\end{bmatrix}\).<br>
+                      (a) Compute \(A\). (b) Row ops for each. (c) Find inverses. (d) Write \(A^{-1}\) as product.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a)</strong> \(A=E_1E_2E_3=\begin{bmatrix}6&1\\3&0\end{bmatrix}\)</div>
+                      <div class="step"><strong>(b)</strong> \(E_3\): scale R1 by 3. \(E_2\): swap R1&amp;R2. \(E_1\):
+                        add 2&times;R2 to R1.</div>
+                      <div class="step"><strong>(c)</strong> \(E_1^{-1}=\begin{bmatrix}1&-2\\0&1\end{bmatrix}\),
+                        \(E_2^{-1}=E_2\), \(E_3^{-1}=\begin{bmatrix}1/3&0\\0&1\end{bmatrix}\)</div>
+                      <div class="step"><strong>(d)</strong> \(A^{-1}=E_3^{-1}E_2^{-1}E_1^{-1}\) (reverse order).</div>
+                      <div class="note">Rule: (ABC)&#8315;&#185; = C&#8315;&#185;B&#8315;&#185;A&#8315;&#185;. Undo
+                        elementary row ops in reverse order.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final C Q10 / Final B Q8 (Kernel, one-to-one, onto)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Kernel</span><span class="tag tt">One-to-one / Onto</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[2+4+2+2 pts]</span>
+                  <div class="q">
+                    <p>Let \(A=\begin{bmatrix}0&0&2\\0&0&-1\\-2&1&0\end{bmatrix}\) and \(T(\mathbf{x})=A\mathbf{x}\).
+                      (a) Formula for \(T(x,y,z)\). (b) ker\((T)\). (c) One-to-one? (d) Onto?</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a)</strong> \(T(x,y,z)=(2z,-z,y-2x)\).</div>
+                      <div class="step"><strong>(b)</strong> Set \(A\mathbf{x}=\mathbf{0}\): \(z=0\), \(y=2x\).
+                        \(\ker(T)=\text{span}\{(1,2,0)\}\).</div>
+                      <div class="step"><strong>(c)</strong> ker \(\neq\{\mathbf{0}\}\Rightarrow\) <strong>not
+                          one-to-one</strong>.</div>
+                      <div class="step"><strong>(d)</strong> rank \(=2\neq3\Rightarrow\) <strong>not onto</strong>.
+                      </div>
+                      <div class="note">Null space of a skew-symmetric matrix relates to vectors perpendicular to its
+                        row space.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chapter" id="ch4">
+            <div class="ch-hdr">
+              <div class="ch-n">04</div>
+              <div>
+                <div class="ch-tag">Part II · Chapter 4</div>
+                <div class="ch-title">Vector Spaces &amp; Bases</div>
+                <div class="ch-desc">Subspaces, spans, bases, dimension, four fundamental subspaces, coordinates, &
+                  change of basis</div>
+              </div>
+            </div>
+            <table class="ft">
+              <tr>
+                <th>Subtopic</th>
+                <th>Goal</th>
+                <th>Priority</th>
+              </tr>
+              <tr>
+                <td>Subspace Verification</td>
+                <td>Prove Zero + Closure (+ and *)</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Basis & Dimension</td>
+                <td>LI + Span space, #basis vectors</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Four Fund. Subspaces</td>
+                <td>Col/Null/Row/Null(A^T) relationships</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+              <tr>
+                <td>Change of Basis</td>
+                <td>Find transition matrices P_{C←B}</td>
+                <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+              </tr>
+            </table>
+            <div class="fb">
+              <h4>Key Formulas — Ch 4</h4>
+              <div class="f">
+                <strong>Change of Basis:</strong> \([\mathbf{x}]_{\mathcal{B}_2} = P_{\mathcal{B}_2 \leftarrow
+                \mathcal{B}_1} [\mathbf{x}]_{\mathcal{B}_1}\) &nbsp;|&nbsp; <strong>Standard to B:</strong>
+                \([\mathbf{x}]_\mathcal{B} = P_{\mathcal{B} \leftarrow \mathcal{S}} \mathbf{x} = (P_{\mathcal{S}
+                \leftarrow \mathcal{B}})^{-1}\mathbf{x}\)<br>
+                <strong>Finding P:</strong> \([\;\mathcal{B}_2\;|\;\mathcal{B}_1\;] \xrightarrow{\text{rref}}
+                [\;I\;|\;P_{\mathcal{B}_2 \leftarrow \mathcal{B}_1}\;]\) &nbsp;|&nbsp; <strong>Subspace Test:</strong>
+                \(\mathbf{0}\in S\), \(\mathbf{u}+\mathbf{v}\in S\), \(c\mathbf{u}\in S\)<br>
+                <strong>Four Subspaces:</strong> \(\text{dim(Col)}=\text{dim(Row)}=r\) &nbsp;|&nbsp;
+                \(\text{dim(Null)}=n-r\) &nbsp;|&nbsp; \(\text{dim(Null } A^T)=m-r\)
+              </div>
+            </div>
+            <div class="sbox">
+              <h4>Mastering the Method: Spaces & Bases</h4>
+              <div class="si"><strong>Subspace Proof Template:</strong> (1) Show \(\mathbf{0} \in S\). (2) Let
+                \(\mathbf{u}, \mathbf{v} \in S\) and \(s, t \in \mathbb{R}\). Compute \(s\mathbf{u}+t\mathbf{v}\) and
+                show it satisfies the set condition. "Therefore \(S\) is a subspace."</div>
+              <div class="si"><strong>Coordinates in Basis B:</strong> Row reduce
+                \([\;\mathbf{b}_1\;|\;\mathbf{b}_2\;|\;\cdots\;|\;\mathbf{x}\;]\). Last column is
+                \([\mathbf{x}]_\mathcal{B}\).</div>
+              <div class="si"><strong>Find P_{C←B} (Change of Basis Matrix):</strong> Stack Basis C on left and Basis B
+                on right: \([\;\mathbf{c}_1 \mathbf{c}_2 \dots | \mathbf{b}_1 \mathbf{b}_2 \dots\;]\). Row reduce until
+                left side is \(I\). Right side is your transition matrix.</div>
+              <div class="si"><strong>Fundamental Subspaces Table:</strong> (1) **Col(A)**: pivots of ORIGINAL A. (2)
+                **Row(A)**: non-zero rows of RREF. (3) **Null(A)**: solve \(Ax=\mathbf{0}\), get basis from parameters.
+              </div>
+            </div>
+            <div class="sec" id="s41">
+              <div class="sec-t">4.1–4.4 — Subspaces, Basis & Coordinates</div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Guide Q7 / Sample Midterm A Q1</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Subspace
+                      Proof</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Let \(S = \{(2a, a, b, b-c) \mid a,b,c \in \mathbb{R}\}\) in \(\mathbb{R}^4\). Prove \(S\) is a
+                      subspace.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>Non-empty:</strong> Set \(a=b=c=0 \Rightarrow (0,0,0,0) \in S\).</div>
+                      <div class="step"><strong>Closure:</strong> Let \(\mathbf{v}, \mathbf{w} \in S\) and \(s, t \in
+                        \mathbb{R}\).<br>\(s\mathbf{v}+t\mathbf{w} = (2(sa_1+ta_2), sa_1+ta_2, sb_1+tb_2,
+                        (sb_1+tb_2)-(sc_1+tc_2))\).</div>
+                      <div class="step">Form matches \((2\alpha, \alpha, \beta, \beta-\gamma)\) with \(\alpha =
+                        sa_1+ta_2, \beta = sb_1+tb_2, \gamma = sc_1+tc_2\). <strong>Subspace confirmed.</strong></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 5 Q2 (Dimension of Span)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Dimension</span>
+                  </div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Find \(\dim(\text{span}\{ (1,0,2), (3,1,7), (0,-1,-1), (2,2,1) \})\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Matrix reduction: \(\begin{bmatrix} 1&3&0&2\\0&1&-1&2\\2&7&-1&1 \end{bmatrix}
+                        \dots \to 3\) pivots.</div>
+                      <div class="ans"><strong>Dimension = 3.</strong></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 3 Q2 (Basis of Null Space)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Null
+                      Space</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Find basis for: \(x_1+2x_2+3x_3-x_4=0, 2x_1+4x_2+6x_3+x_4=0, 2x_1+4x_2+7x_3+3x_4=0\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">RREF: \(\begin{bmatrix}1&2&0&0\\0&0&1&0\\0&0&0&1\end{bmatrix}\). 1 free
+                        variable.</div>
+                      <div class="ans"><strong>Basis: \(\{(-2, 1, 0, 0)\}\).</strong></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Summary Q8 & Q9</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">LI
+                      Basis</span><span class="tag tt">Linear Combination</span></div>
+                </div>
+                <div class="qcb">
+                  <p><strong>(Q8)</strong> Find maximal independent subset of \(S = \{(1,1,3,4), (2,7,8,-4), (2,3,5,-1),
+                    (-1,2,1,2)\}\).</p>
+                  <p><strong>(Q9)</strong> Is \(\mathbf{w}=(1,2,3,4)\) a linear combination of
+                    \(\mathbf{v}_1=(-1,1,0,2), \mathbf{v}_2=(2,0,1,0), \mathbf{v}_3=(1,1,0,1)\)?</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(Q8):</strong> Stack vectors as columns of matrix A. Row reduce to RREF.
+                      Identify pivot columns of ORIGINAL set. Pivot columns are 1, 2, 3. <strong>Subset: \(\{(1,1,3,4),
+                        (2,7,8,-4), (2,3,5,-1)\}\).</strong></div>
+                    <div class="step"><strong>(Q9):</strong> Solve \([\mathbf{v}_1 \mathbf{v}_2 \mathbf{v}_3 |
+                      \mathbf{w}]\). Row reduce. If row [0 0 0 | c] with c≠0 exists, it's NOT a combination.
+                      <strong>Result: No.</strong>
+                    </div>
+                  </div>
+                </details>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 1 Exam Q3 (Basis for Span)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Basis</span><span class="tag tt">Rank</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>A = \(\begin{bmatrix}2&6&1&5\\3&2&0&2\\1&4&1&3\\-1&5&2&3\end{bmatrix}\) with RREF
+                      \(\begin{bmatrix}1&0&0&0\\0&1&0&1\\0&0&1&-1\\0&0&0&0\end{bmatrix}\). (a) Rank. (b) Basis for Span
+                      of columns.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a) Rank:</strong> Count of pivots in RREF = 3.</div>
+                      <div class="step"><strong>(b) Basis:</strong> Columns 1, 2, 3 of ORIGINAL A (since pivots are in
+                        cols 1, 2, 3 of RREF).</div>
+                      <div class="ans">\(\{(2,3,1,-1), (6,2,4,5), (1,0,1,2)\}\)</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Guide Q15 / Review Q2 (B-Matrix & Linear Operators)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">B-Matrix</span><span class="tag tt">Matrix Operator</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>(Q15)</strong> \(L([x_1,x_2,x_3])=[2x_1-7x_2-3x_3, x_1-2x_2-x_3, -2x_2-x_3]\). Basis
+                      \(\mathcal{B}=\{[1,0,1],[0,1,1],[1,1,1]\}\). Find \([L]_\mathcal{B}\).</p>
+                    <p><strong>(Review Q2)</strong> \(L(\begin{bmatrix}a&b\\c&d\end{bmatrix}) =
+                      \begin{bmatrix}a+d&b+c\\0&d\end{bmatrix}\). Find matrix relative to basis \(\mathcal{B}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>Q15:</strong> Apply L to basis vectors, then solve for B-coordinates.
+                        \([L(\mathbf{b}_1)]_\mathcal{B}=[-1,0,0]\), \([L(\mathbf{b}_2)]_\mathcal{B}=[0,7,-10]\),
+                        \([L(\mathbf{b}_3)]_\mathcal{B}=[-1,5,-7]\).</div>
+                      <div class="ans">\([L]_\mathcal{B} = \begin{bmatrix}-1&0&-1\\0&7&5\\0&-10&-7\end{bmatrix}\)</div>
+                      <div class="step"><strong>Review Q2:</strong> Same steps. Apply L to each matrix \(\mathbf{B}_i\),
+                        convert to \(\mathcal{B}\) coordinates.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 2 Exam MC2 & Q2 (Change of Coordinates)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Coordinates</span><span class="tag tt">P_{B←S}</span></div>
+                </div>
+                <div class="qcb">
+                  <p><strong>(MC2):</strong> \(B = \{(1,1), (1,-1)\}\). Coordinates of \((4,2)\) in B.</p>
+                  <p><strong>(Q2):</strong> Subspace U (0 in 3rd component). \(S = \{(1,0,0,0), (0,1,0,0),
+                    (0,0,0,1)\}\). \(B = \{(1,1,0,1), (0,1,0,0), (1,0,0,-1)\}\). (a) Find \(P_{B \leftarrow S}\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(MC2):</strong> Solve \(\begin{bmatrix}1&1&4\\1&-1&2\end{bmatrix}
+                      \rightarrow \begin{bmatrix}1&1&4\\0&-2&-2\end{bmatrix} \rightarrow c_2=1, c_1=3\). <strong>\([x]_B
+                        = (3,1)\). Answer D.</strong></div>
+                    <div class="step"><strong>(Q2):</strong> \(P_{S \leftarrow B} =
+                      \begin{bmatrix}1&0&1\\1&1&0\\1&0&-1\end{bmatrix}\). Invert to get \(P_{B \leftarrow S} =
+                      \begin{bmatrix}0.5&0&0.5\\-0.5&1&0.5\\0.5&0&-0.5\end{bmatrix}\).</div>
+                  </div>
+                </details>
+              </div>
+
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Q2(c)(d) &amp; Final A Q1(c)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Linear
+                      independence</span><span class="tag tt">Basis</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>Definition:</strong> State what it means for
+                      \(\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}\) to be linearly independent.</p>
+                    <p><strong>(Practice Q2d)</strong> Is \(\{(1,2),(7,4),(3,8)\}\) linearly independent? If not, write
+                      one as a combination of the others.</p>
+                    <p><strong>(Final A Q1c)</strong> For what \(k\) is \(B=\{(1,2,0),(0,0,2),(2,k,3)\}\) a basis of
+                      \(\mathbb{R}^3\)?</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>Definition:</strong> LI if
+                        \(c_1\mathbf{v}_1+c_2\mathbf{v}_2+c_3\mathbf{v}_3=\mathbf{0}\Rightarrow c_1=c_2=c_3=0\).</div>
+                      <div class="step"><strong>Practice Q2d:</strong> 3 vectors in \(\mathbb{R}^2\Rightarrow\)
+                        automatically dependent (max rank 2 &lt; 3). Solve for the combination by row reduction.</div>
+                      <div class="step"><strong>Final A Q1c:</strong> Basis \(\Leftrightarrow\det\neq0\).
+                        \(\det\begin{bmatrix}1&2&0\\0&0&2\\2&k&3\end{bmatrix}=-2k+8\). Basis iff \(k\neq4\).</div>
+                      <div class="note">n vectors in &#8477;&#8319; form a basis iff their n&times;n matrix has nonzero
+                        determinant.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Q12(a) &amp; Final B Q14 (Subspace proofs)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Subspace
+                      proof</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[proof]</span>
+                  <div class="q">
+                    <p><strong>(Practice Q12a)</strong> Show
+                      \(S=\{\mathbf{x}\in\mathbb{R}^4:\mathbf{x}\cdot\mathbf{v}=0\text{ and
+                      }\mathbf{x}\cdot\mathbf{w}=0\}\) is a subspace.</p>
+                    <p><strong>(Final B Q14)</strong> Prove \(V_1\cap V_2\) is a subspace if \(V_1,V_2\) are subspaces.
+                    </p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>3 axioms for S:</strong><br>1. <em>Zero:</em>
+                        \(\mathbf{0}\cdot\mathbf{v}=0\,\checkmark\)<br>2. <em>Addition:</em> if
+                        \(\mathbf{x},\mathbf{y}\in S\):
+                        \((\mathbf{x}+\mathbf{y})\cdot\mathbf{v}=\mathbf{x}\cdot\mathbf{v}+\mathbf{y}\cdot\mathbf{v}=0\,\checkmark\)<br>3.
+                        <em>Scalar:</em> \((c\mathbf{x})\cdot\mathbf{v}=c(\mathbf{x}\cdot\mathbf{v})=0\,\checkmark\)
+                      </div>
+                      <div class="step"><strong>Intersection V&#8321;&cap;V&#8322;:</strong> Same 3 checks — use closure
+                        of each V&#8321;, V&#8322; separately for steps 2 and 3.</div>
+                      <div class="note"><strong>Template:</strong> Every subspace proof checks exactly 3 things.
+                        Memorize this structure for guaranteed marks.</div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <div class="chapter" id="ch5">
+              <div class="ch-hdr">
+                <div class="ch-n">05</div>
+                <div>
+                  <div class="ch-tag">Part II · Chapter 5</div>
+                  <div class="ch-title">Determinants</div>
+                  <div class="ch-desc">Cofactor expansion, row operation effects, det of products & inverses, & volume
+                    applications</div>
+                </div>
+              </div>
+              <table class="ft">
+                <tr>
+                  <th>Subtopic</th>
+                  <th>Goal</th>
+                  <th>Priority</th>
+                </tr>
+                <tr>
+                  <td>Cofactor Expansion</td>
+                  <td>Expand along row/col with most zeros</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Determinant Properties</td>
+                  <td>det(AB), det(A^T), det(A^{-1}), det(cA)</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Row Operations</td>
+                  <td>Swap(-), Scale(c), Add Multiple(unchanged)</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+              </table>
+              <div class="fb">
+                <h4>Key Formulas — Ch 5</h4>
+                <div class="f">
+                  <strong>Expansion:</strong> \(\det(A) = \sum a_{ij} C_{ij}\) where \(C_{ij}=(-1)^{i+j}M_{ij}\)
+                  &nbsp;|&nbsp; <strong>Product:</strong> \(\det(AB)=\det(A)\det(B)\)<br>
+                  <strong>Scalar Scale:</strong> \(\det(cA) = c^n \det(A)\) &nbsp;|&nbsp; <strong>Inverse:</strong>
+                  \(\det(A^{-1})=1/\det(A)\) &nbsp;|&nbsp; <strong>Triangular:</strong> \(\det= \prod\) diagonals<br>
+                  <strong>Volume:</strong> Volume of parallelepiped =
+                  \(|\det[\;\mathbf{v}_1\;|\;\mathbf{v}_2\;|\;\mathbf{v}_3\;]|\)
+                </div>
+              </div>
+              <div class="sbox">
+                <h4>Mastering the Method: Determinants</h4>
+                <div class="si"><strong>4x4 Determinant via Row Ops:</strong> (1) Use row addition (\(R_i \leftarrow R_i
+                  + kR_j\)) to create a column with 3 zeros. (2) Expand along that column (det is unchanged). (3) Repeat
+                  for 3x3 result.</div>
+                <div class="si"><strong>Volume & Orthogonality:</strong> For volume, stack vectors as columns and take
+                  absolute det. To find vector \(\mathbf{w}\) orthogonal to \(\mathbf{u}, \mathbf{v}\), solve
+                  \(\mathbf{w}\cdot\mathbf{u}=0, \mathbf{w}\cdot\mathbf{v}=0\).</div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Midterm 2 Exam MC5 (3x3 Determinant)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">3x3 det</span>
+                  </div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Evaluate \(\det\begin{bmatrix}2&0&1\\3&1&-1\\0&2&4\end{bmatrix}\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Expand along row 1: \(2(4 - (-2)) - 0(\dots) + 1(6 - 0) = 2(6) + 6 = 18\).</div>
+                      <div class="ans"><strong>Answer: 18 (Answer E).</strong></div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <!-- Practice Guide Addition -->
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Practice Guide Q19 / Quiz 7 Q1</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">4x4
+                      Determinant</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Evaluate \(\det\begin{bmatrix}1&2&4&-2\\2&5&1&-2\\1&3&-2&1\\-1&3&1&7\end{bmatrix}\) using row
+                      operations.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step">Create zeros in col 1: \(R_2-2R_1, R_3-R_1, R_4+R_1\). Expand along col 1.</div>
+                      <div class="step">Evaluate the resulting 3x3 det using cofactor expansion or further row ops.
+                      </div>
+                      <div class="ans"><strong>Result: 0</strong> (Row 4 becomes zero after \(R_4 + R_1 - R_2 - R_3\)).
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Quiz 6 Q1 (Determinant properties)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                      class="tag tt">Properties</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p>Given \(\det(A)=13\) (2x2), find \(\det(3A)\).</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="ans">\(\det(3A) = 3^2 \det(A) = 117\).</div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final A Q2 (Five determinant properties)</span>
+                  <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Determinant
+                      properties</span></div>
+                </div>
+                <div class="qcb"><span class="pts">[2 pts each]</span>
+                  <div class="q">
+                    <p>Given \(\det(A)=3\). Find det of: (a) swap R1&amp;R2. (b) scale R1 by 2. (c) add 2&times;R1 to
+                      R3. (d) replace \(x\) with 12. (e) \(\det(AB)\) where \(B\) has diagonal 1,5,1.</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>(a)</strong> Swap \(\Rightarrow-3\).</div>
+                      <div class="step"><strong>(b)</strong> Scale R1 by 2 \(\Rightarrow 6\).</div>
+                      <div class="step"><strong>(c)</strong> Add row multiple \(\Rightarrow\) unchanged \(=3\).</div>
+                      <div class="step"><strong>(d)</strong> With \(x=12\): the matrix becomes singular
+                        \(\Rightarrow\det=0\).</div>
+                      <div class="step"><strong>(e)</strong> \(\det(B)=1\cdot5\cdot1=5\). \(\det(AB)=3\times5=15\).
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="qc">
+                <div class="qch"><span class="qcsrc">Final B Q9(a) &amp; Final D T/F</span>
+                  <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">det &
+                      invertibility</span></div>
+                </div>
+                <div class="qcb">
+                  <div class="q">
+                    <p><strong>(Final B Q9a)</strong> \(B\) has char. poly \(p(\lambda)\) with \(p(0)=3\). Does
+                      \(B^{-1}\) exist?</p>
+                    <p><strong>(Final D T/F)</strong> \(\det(A)=4\), \(\det(B)=8\Rightarrow\det(A^{-1}B)=2\).
+                      True/False?</p>
+                  </div>
+                  <details class="sol">
+                    <summary>Show Solution</summary>
+                    <div class="sb2">
+                      <div class="step"><strong>Final B:</strong> \(p(0)=\det(B)=3\neq0\Rightarrow B^{-1}\)
+                        <strong>exists</strong>.
+                      </div>
+                      <div class="step"><strong>Final D:</strong> \(\det(A^{-1}B)=\tfrac{1}{4}\cdot8=2\).
+                        <strong>True.</strong>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+            <div class="chapter" id="ch6">
+              <div class="ch-hdr"
+                style="margin-bottom: 25px; background: rgba(244, 114, 182, 0.1); border-left: 5px solid var(--pc); padding: 15px 20px; border-radius: 4px;">
+                <div
+                  style="font-weight: 800; color: var(--pc); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">
+                  Part Three: Eigenvectors, Orthogonality, and SVD</div>
+              </div>
+              <div class="ch-hdr">
+                <div class="ch-n">06</div>
+                <div>
+                  <div class="ch-tag">Part III · Chapter 6</div>
+                  <div class="ch-title">Eigenvalues, Eigenvectors & Diagonalization</div>
+                  <div class="ch-desc">Characteristic polynomial, eigenspaces, matrix powers, Markov chains,
+                    steady-state vectors</div>
+                </div>
+              </div>
+              <table class="ft">
+                <tr>
+                  <th>Subtopic</th>
+                  <th>Appears in</th>
+                  <th>Priority</th>
+                </tr>
+                <tr>
+                  <td>Characteristic polynomial & eigenvalues</td>
+                  <td>Practice Q1(a) Q9(b), Final B Q6(a), Final C Q9(b), Final D Q9</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Eigenvectors & eigenspaces</td>
+                  <td>Practice Q1(b)(c), Final B Q6(b)(c), Final A Q1(e)</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Diagonalizability conditions</td>
+                  <td>Practice Q1(d) Q9(a), Final B Q6, Final D Q9</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Matrix powers A&#7487; = PD&#7487;P&#8315;&#185;</td>
+                  <td>Practice Q6(d), Final C Q9(e)</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Markov chains & steady-state vector</td>
+                  <td>Practice Q10–11, Final C Q6, Final D T/F</td>
+                  <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+                </tr>
+                <tr>
+                  <td>Dominant eigenvalue (triangular)</td>
+                  <td>Final A Q1(d), Final D Q3(b)</td>
+                  <td><span class="dot dme"></span><span class="dot dme"></span> MEDIUM</td>
+                </tr>
+              </table>
+              \(A\mathbf{v} =
+              \lambda\mathbf{v}\) &nbsp;|&nbsp; \(A^k = PD^k P^{-1}\)
+            </div>
+          </div>
+          <div class="fb">
+            <h4>Midterm 2 Mastery — Eigen Basics</h4>
+            <div class="f">
+              <strong>(MC7):</strong> If \(\lambda=3\) is an eigenvalue for \(\mathbf{v}\), then \(A\mathbf{v} =
+              3\mathbf{v}\) must be true. \((A-3I)\) is NOT invertible.<br>
+              <strong>(MC6):</strong> For \(A = \begin{bmatrix}3&1\\0&2\end{bmatrix}\), eigenvalues are 3, 2.
+              Eigenvector for \(\lambda=3\) is \((1,0)\). Eigenvector for \(\lambda=2\) is \((1,-1)\).
+            </div>
+          </div>
+          <div class="sbox">
+            <h4>Mastering the Method: Eigen-Systems</h4>
+            <div class="si"><strong>Diagonalization Algorithm:</strong> (1) Find roots of \(\det(A-\lambda I)=0\).
+              (2) For each \(\lambda\), find basis for null space of \((A-\lambda I)\). (3) If total # eigenvectors
+              \(= n\), then \(P=[ \mathbf{v}_1 \dots \mathbf{v}_n ]\) and \(D=\text{diag}(\lambda_1 \dots
+              \lambda_n)\).</div>
+            <div class="si"><strong>Find k for given Eigenvector:</strong> If \(\mathbf{v}\) is an eigenvector, then
+              \(A\mathbf{v} = \lambda\mathbf{v}\). Compute \(A\mathbf{v}\), and solve the ratio of components to
+              find \(\lambda\) and any unknown \(k\).</div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Review Question 3 (3x3 Diagonalization)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Diagonalize</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Diagonalize \(A = \begin{bmatrix}2&0&0\\-1&3&-1\\1&-1&3\end{bmatrix}\) by finding \(D\) and
+                  \(P\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>Eigenvalues:</strong> \(\lambda=4, 2, 2\). (\(\lambda=2\) has AM=2).
+                  </div>
+                  <div class="step"><strong>Eigenspace \(\lambda=4\):</strong> \((A-4I)\mathbf{x}=\mathbf{0}
+                    \Rightarrow \mathbf{v}_1 = (0,-1,1)\).</div>
+                  <div class="step"><strong>Eigenspace \(\lambda=2\):</strong>
+                    \(\begin{bmatrix}0&0&0\\-1&1&-1\\1&-1&1\end{bmatrix} \Rightarrow x-y+z=0\). Basis:
+                    \(\mathbf{v}_2=(1,1,0), \mathbf{v}_3=(-1,0,1)\).</div>
+                  <div class="ans">\(D = \text{diag}(4, 2, 2)\), \(P =
+                    \begin{bmatrix}0&1&-1\\-1&1&0\\1&0&1\end{bmatrix}\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Midterm 2 Exam Q3 (Matrix of Linear Transformation [L]_B)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">B-Matrix</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>\(L(x_1,x_2,x_3) = (x_1+6x_2+3x_3, -2x_2, 3x_1+6x_2+x_3)\). Basis \(B = \{(-2,1,0), (-1,0,1),
+                  (1,0,1)\}\). Find \([L]_B\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Method 1: Find \([L]_S = \begin{bmatrix}1&6&3\\0&-2&0\\3&6&1\end{bmatrix}\). Use
+                    \([L]_B = P_{B \leftarrow S} [L]_S P_{S \leftarrow B}\).</div>
+                  <div class="step">Method 2: Apply L to each \(\mathbf{b}_i\), then find its coordinates in B.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Midterm 2 Exam Q4 (3x3 Diagonalization)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                  class="tag tt">Diagonalization</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Diagonalize \(A = \begin{bmatrix}2&-3&1\\0&3&1\\0&0&2\end{bmatrix}\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Eigenvalues (triangular matrix): \(\lambda=2, 3, 2\). AM(2)=2, AM(3)=1.</div>
+                  <div class="step"><strong>Eigenspace \(\lambda=2\):</strong>
+                    \(\begin{bmatrix}0&-3&1\\0&1&1\\0&0&0\end{bmatrix} \rightarrow x\) free, \(y=0, z=0\). Basis
+                    \(\mathbf{v}_1=(1,0,0)\). (Only ONE vector).</div>
+                  <div class="ans">Wait: GM(2)=1 < AM(2)=2. Matrix is <strong>NOT diagonalizable</strong>.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Quiz 8 Q1 (Multiplicity)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">AM/GM</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Find AM and GM for \(A = \begin{bmatrix} 2 & 3 & 3 \\ 3 & 2 & 3 \\ 3 & 3 & 2 \end{bmatrix}\) given
+                  \(p(\lambda) = -(\lambda+1)^2(\lambda-8)\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">\(\lambda_1 = -1\): AM=2. GM: rank\((A+I) = 1 \Rightarrow\) GM=2.</div>
+                  <div class="step">\(\lambda_2 = 8\): AM=1. Always GM=1.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Quiz 8 Q2 (Diagonalization)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Diagonalize</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Diagonalize \(B = \begin{bmatrix} -2 & 8 \\ 1 & -4 \end{bmatrix}\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Given \(\lambda_1 = 0, \mathbf{v}_1 = (4,1)\) and \(\lambda_2 = -6, \mathbf{v}_2 =
+                    (-2,1)\).</div>
+                  <div class="ans">\(D = \begin{bmatrix} 0 & 0 \\ 0 & -6 \end{bmatrix}\), \(P = \begin{bmatrix} 4 & -2
+                    \\ 1 & 1 \end{bmatrix}\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Quiz 6 Q2 (Coordinate Transformation [L(x)]_B)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Coordinates</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Given \([L]_B\) and \(B = \{(1,0,1), (0,1,1), (1,1,1)\}\), find \([L(\mathbf{x})]_B\) for
+                  \(\mathbf{x} = (1,-2,3)\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Find \([\mathbf{x}]_B = (5, 2, -4)^T\) by solving \(c_1\mathbf{b}_1 +
+                    c_2\mathbf{b}_2 + c_3\mathbf{b}_3 = \mathbf{x}\).</div>
+                  <div class="ans">\([L(\mathbf{x})]_B = [L]_B[\mathbf{x}]_B\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="sec" id="s61">
+            <div class="sec-t">6.1–6.2 — Eigenvalues, Eigenvectors & Diagonalization</div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Practice Q1 &amp; Q9(a)(b) / Final D Q9</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Char.
+                    polynomial</span><span class="tag tt">Eigenvectors</span><span class="tag tt">Diagonalizable</span>
+                </div>
+              </div>
+              <div class="qcb"><span class="pts">[MCQ]</span>
+                <div class="q">
+                  <p><strong>(Practice Q1)</strong> \(A=\begin{bmatrix}0&1\\4&0\end{bmatrix}\). (a) Char. poly. (b)
+                    Eigenvector for \(\lambda_1=2\). (d) Is \(A\) diagonalizable?</p>
+                  <p><strong>(Practice Q9a)</strong> \(A=\begin{bmatrix}5&3\\-6&-4\end{bmatrix}\). Diagonalized
+                    form?</p>
+                  <p><strong>(Practice Q9b)</strong> \(A=VTV^{-1}\), \(T=\begin{bmatrix}2&3\\-1&1\end{bmatrix}\).
+                    Char. poly of \(A\)?</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>Q1(a):</strong> \(\det(A-\lambda I)=\lambda^2-4\). <strong>Answer
+                        B.</strong></div>
+                    <div class="step"><strong>Q1(b):</strong> \((A-2I)\mathbf{v}=\mathbf{0}\):
+                      \(-2v_1+v_2=0\Rightarrow\mathbf{v}=(1,2)\). <strong>Answer C.</strong></div>
+                    <div class="step"><strong>Q1(d):</strong> Two distinct eigenvalues \(\lambda=\pm2\Rightarrow\)
+                      two independent eigenvectors \(\Rightarrow\) <strong>Yes, diagonalizable.</strong></div>
+                    <div class="step"><strong>Q9a:</strong> Char. poly \(=(\lambda-2)(\lambda+1)\). Eigenvalues 2,
+                      &minus;1. Diagonal form: \(\begin{bmatrix}2&0\\0&-1\end{bmatrix}\). <strong>Answer A.</strong>
+                    </div>
+                    <div class="step"><strong>Q9b:</strong> Similar matrices have the same char. poly. Char. poly of
+                      \(T\): \((2-\lambda)(1-\lambda)+3=\lambda^2-3\lambda+5\). <strong>Answer C.</strong></div>
+                    <div class="note">KEY: similar matrices (A = PBP&#8315;&#185;) share the same characteristic
+                      polynomial, eigenvalues, and determinant. Never compute A when you can use B directly.</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final B Q6 (3×3 eigenvalues, multiplicity, eigenspace
+                  basis)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">3×3
+                    eigenvalues</span><span class="tag tt">Multiplicity</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[4+2+3 pts]</span>
+                <div class="q">
+                  <p>\(A=\begin{bmatrix}2&1&0\\1&2&0\\0&0&3\end{bmatrix}\). (a) Eigenvalues + algebraic
+                    multiplicity. (b) Eigenvector for \(\lambda=1\). (c) Basis for eigenspace of \(\lambda=3\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> Block structure: 2&times;2 upper block has eigenvalues
+                      \(\lambda=1,3\); bottom entry gives \(\lambda=3\). Total: \(\lambda=1\) (mult 1),
+                      \(\lambda=3\) (mult 2).</div>
+                    <div class="step"><strong>(b)</strong> \((A-I)\mathbf{v}=\mathbf{0}\):
+                      \(\begin{bmatrix}1&1&0\\1&1&0\\0&0&2\end{bmatrix}\mathbf{v}=\mathbf{0}\). \(v_3=0\),
+                      \(v_1=-v_2\). Eigenvector: \((1,-1,0)\).</div>
+                    <div class="step"><strong>(c)</strong> \((A-3I)\mathbf{v}=\mathbf{0}\):
+                      \(\begin{bmatrix}-1&1&0\\1&-1&0\\0&0&0\end{bmatrix}\). Two free variables: \(v_1=v_2\) free,
+                      \(v_3\) free.</div>
+                    <div class="ans">Basis for \(\lambda=3\) eigenspace: \(\{(1,1,0),(0,0,1)\}\)</div>
+                    <div class="note">Geom. mult of λ=3 is 2 = alg. mult → A is diagonalizable.</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final D Q3(b) &amp; Final A Q1(d) (Dominant eigenvalue)</span>
+                <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">Dominant
+                    eigenvalue</span></div>
+              </div>
+              <div class="qcb">
+                <div class="q">
+                  <p><strong>(Final D)</strong> Dominant eigenvalue of
+                    \(\begin{bmatrix}2&0&0\\-7&-2&0\\1&3&-5\end{bmatrix}\)?</p>
+                  <p><strong>(Final A)</strong> Dominant eigenvalue of
+                    \(\begin{bmatrix}6&0&0\\5&2&0\\0&4&-7\end{bmatrix}\)?</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">Both are lower triangular &Rightarrow; eigenvalues are the diagonal entries.
+                    </div>
+                    <div class="step"><strong>Final D:</strong> diagonals \(2,-2,-5\). Dominant = \(-5\) (largest
+                      \(|\lambda|\)).</div>
+                    <div class="step"><strong>Final A:</strong> diagonals \(6,2,-7\). Dominant = \(-7\).</div>
+                    <div class="note">Triangular matrix shortcut: eigenvalues = diagonal entries. No computation
+                      needed!</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+          <div class="div"></div>
+          <div class="sec" id="s62">
+            <div class="sec-t">6.3 — Matrix Powers & Dynamical Systems</div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Practice Q6(d) (Matrix powers via orthogonal
+                  diagonalization)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Matrix
+                    powers</span></div>
+              </div>
+              <div class="qcb">
+                <div class="q">
+                  <p>\(A=\begin{bmatrix}5&2\\2&2\end{bmatrix}=P\begin{bmatrix}6&0\\0&1\end{bmatrix}P^T\). Compute
+                    \(A^{100}\) as product of 3 matrices.</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">\(A=PDP^T\Rightarrow A^{100}=PD^{100}P^T\). Since \(P\) orthogonal:
+                      \(P^{-1}=P^T\).</div>
+                    <div class="step">\(D^{100}=\begin{bmatrix}6^{100}&0\\0&1\end{bmatrix}\)</div>
+                    <div class="ans">
+                      \(A^{100}=\begin{bmatrix}\frac{\sqrt2}{\sqrt5}&-\frac{1}{\sqrt5}\\\frac{1}{\sqrt5}&\frac{\sqrt2}{\sqrt5}\end{bmatrix}\begin{bmatrix}6^{100}&0\\0&1\end{bmatrix}\begin{bmatrix}\frac{\sqrt2}{\sqrt5}&\frac{1}{\sqrt5}\\-\frac{1}{\sqrt5}&\frac{\sqrt2}{\sqrt5}\end{bmatrix}\)
+                    </div>
+                    <div class="note">Leave as a product of 3 matrices — the exam explicitly says not to multiply
+                      out.</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final C Q9(e) (Convergence of dynamical system)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Convergence</span>
+                </div>
+              </div>
+              <div class="qcb"><span class="pts">[4 pts]</span>
+                <div class="q">
+                  <p>\(B=PAP^{-1}\), \(A=\text{diag}(1,1/2,1/3)\). Eigenvectors
+                    \(\mathbf{x}_1,\mathbf{x}_2,\mathbf{x}_3\) with eigenvalues \(1,1/2,1/3\). Given
+                    \(\mathbf{v}=c_1\mathbf{x}_1+c_2\mathbf{x}_2+c_3\mathbf{x}_3\). What does \(B^k\mathbf{v}\to\)
+                    as \(k\to\infty\)?</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">
+                      \(B^k\mathbf{v}=c_1\cdot1^k\mathbf{x}_1+c_2(1/2)^k\mathbf{x}_2+c_3(1/3)^k\mathbf{x}_3\).</div>
+                    <div class="step">As \(k\to\infty\): \((1/2)^k\to0\), \((1/3)^k\to0\), only \(1^k=1\) survives.
+                    </div>
+                    <div class="ans">\(B^k\mathbf{v}\to c_1\mathbf{x}_1\)</div>
+                    <div class="note">Terms with |λ| < 1 decay to zero. Only |λ|=1 terms survive in the limit.</div>
+                    </div>
+                </details>
+              </div>
+            </div>
+          </div>
+          <div class="div"></div>
+          <div class="sec" id="s63">
+            <div class="sec-t">6.3 — Markov Chains & Steady-State Vectors</div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final C Q6 (All 3 parts)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Markov</span><span
+                    class="tag tt">Steady-state</span><span class="tag tt">Regular</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[2+2+4 pts]</span>
+                <div class="q">
+                  <p>Transition matrix: \(P=\begin{bmatrix}1-p&1\\p&0\end{bmatrix}\), \(0<p<1\).<br>
+                      (a) P(state A at t=2 | start A at t=0). (b) Is P regular? (c) Steady-state vector.</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> \(\mathbf{x}_0=(1,0)^T\). \(P^2\mathbf{x}_0\) first entry
+                      \(=(1-p)^2+p=1-p+p^2\).</div>
+                    <div class="step"><strong>(b)</strong> \(P^2\) has all positive entries for \(0<p<1\). <strong>
+                        Yes, regular.</strong></div>
+                    <div class="step"><strong>(c)</strong> Solve \(P\mathbf{q}=\mathbf{q}\), \(q_1+q_2=1\):
+                      \(q_2=pq_1\), \(q_1(1+p)=1\).</div>
+                    <div class="ans">\(\mathbf{q}=\left(\frac{1}{1+p},\;\frac{p}{1+p}\right)\)</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Practice Q10 (2×2 steady-state) &amp; Q11 (3×3 drink
+                  Markov)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                    class="tag tt">Steady-state</span><span class="tag tt">3×3 Markov</span></div>
+              </div>
+              <div class="qcb">
+                <div class="q">
+                  <p><strong>Q10:</strong> \(P=\begin{bmatrix}1/2&3/10\\1/2&7/10\end{bmatrix}\). Steady-state
+                    vector.</p>
+                  <p><strong>Q11:</strong> Man picks Latte/Tea/HotChoc daily, never repeats. From Latte: each other
+                    with prob 1/2. From Tea or HotChoc: pick Latte with prob 2/3.<br>(a) Transition matrix. (b)
+                    P(Latte day 3 | Latte day 1).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>Q10:</strong> \((P-I)\mathbf{q}=\mathbf{0}\):
+                      \(-\tfrac{1}{2}q_1+\tfrac{3}{10}q_2=0\Rightarrow q_1=\tfrac{3}{5}q_2\). With \(q_1+q_2=1\):
+                      \(q_2=5/8\), \(q_1=3/8\).</div>
+                    <div class="ans">Q10: \(\mathbf{q}=(3/8,\;5/8)\)</div>
+                    <div class="step"><strong>Q11(a):</strong> Columns = from L, T, H:
+                      \(P=\begin{bmatrix}0&2/3&2/3\\1/2&0&1/3\\1/2&1/3&0\end{bmatrix}\)</div>
+                    <div class="step"><strong>Q11(b):</strong> \(\mathbf{x}_1=(1,0,0)^T\). Day 2:
+                      \(P\mathbf{x}_1=(0,1/2,1/2)^T\). Day 3 first entry:
+                      \(\tfrac{2}{3}\cdot\tfrac{1}{2}+\tfrac{2}{3}\cdot\tfrac{1}{2}=\tfrac{2}{3}\).</div>
+                    <div class="ans">Q11(b): P(Latte day 3) = \(\mathbf{2/3}\)</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final D T/F (Regular stochastic matrices)</span>
+                <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">Regular
+                    matrix</span></div>
+              </div>
+              <div class="qcb">
+                <div class="q">
+                  <p>\(P=\begin{bmatrix}1&0.2&0.1\\0&0.8&0.2\\0&0&0.7\end{bmatrix}\) is regular. True/False?</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">Upper triangular: sub-diagonal entries are 0 in all powers (triangular
+                      structure preserved). No power has all positive entries.</div>
+                    <div class="ans"><strong>False.</strong> Upper triangular stochastic matrix is never regular
+                      (state 1 is absorbing).</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chapter" id="ch7">
+          <div class="ch-hdr">
+            <div class="ch-n">07</div>
+            <div>
+              <div class="ch-tag">Part III &middot; Chapter 7</div>
+              <div class="ch-title">Inner Products and Projections</div>
+              <div class="ch-desc">Orthogonal bases, Gram–Schmidt, orthogonal complements, projection matrices,
+                normal equations</div>
+            </div>
+          </div>
+          <table class="ft">
+            <tr>
+              <th>Subtopic</th>
+              <th>Goal</th>
+              <th>Priority</th>
+            </tr>
+            <tr>
+              <td>Gram–Schmidt process</td>
+              <td>Convert Basis to Orthogonal/Orthonormal</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>Orthogonal Projection</td>
+              <td>\(\text{proj}_W \mathbf{x} \in W, (\mathbf{x}-\text{proj}_W \mathbf{x}) \in W^\perp\)</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>Least squares</td>
+              <td>Minimize error \(\|\mathbf{b}-A\hat{\mathbf{x}}\|\)</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+          </table>
+          <div class="fb">
+            <h4>Key Formulas — Ch 7</h4>
+            <div class="f">
+              \(\text{proj}_{\mathbf{a}}\mathbf{x}=\frac{\mathbf{x}\cdot\mathbf{a}}{\|\mathbf{a}\|^2}\mathbf{a}\)
+              &nbsp;|&nbsp; Subspace:
+              \(\text{proj}_W\mathbf{x}=\sum_i\frac{\mathbf{x}\cdot\mathbf{v}_i}{\|\mathbf{v}_i\|^2}\mathbf{v}_i\)
+              (orthogonal basis)<br>Normal equations: \(A^TA\hat{\mathbf{x}}=A^T\mathbf{b}\) &nbsp;|&nbsp; Error:
+              \(\|\mathbf{b}-A\hat{\mathbf{x}}\|\)<br>\(\text{null}(A)^\perp=\text{row}(A)\) &nbsp;|&nbsp;
+              \(\text{col}(A)^\perp=\text{null}(A^T)\)</div>
+          </div>
+          <div class="sbox">
+            <h4>Mastering the Method: Projections & Gram-Schmidt</h4>
+            <div class="si"><strong>Gram-Schmidt Step-by-Step:</strong> (1) \(\mathbf{v}_1=\mathbf{w}_1\). (2)
+              \(\mathbf{v}_2=\mathbf{w}_2 - \text{proj}_{\mathbf{v}_1}\mathbf{w}_2\). (3)
+              \(\mathbf{v}_3=\mathbf{w}_3 - \text{proj}_{\mathbf{v}_1}\mathbf{w}_3 -
+              \text{proj}_{\mathbf{v}_2}\mathbf{w}_3\).</div>
+            <div class="si"><strong>Find Basis for W&#x22A5;:</strong> If \(W=\text{span}\{\mathbf{w}_i\}\), then
+              \(W^\perp = \text{null}(\begin{bmatrix} \dots \mathbf{w}_1 \dots \\ \dots \mathbf{w}_2 \dots
+              \end{bmatrix})\). Solve the homogeneous system.</div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Simulation Q1aii (Build Orthonormal Set)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Orthonormal</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Let \(\mathbf{v}_1 = (1,2,1)\). Find orthonormal set \(\{\mathbf{w}_1, \mathbf{w}_2,
+                  \mathbf{w}_3\}\) with \(\mathbf{w}_1 \parallel \mathbf{v}_1\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>Normalize \(\mathbf{v}_1\):</strong> \(\mathbf{w}_1 =
+                    \frac{1}{\sqrt{6}}(1,2,1)\).</div>
+                  <div class="step"><strong>Find \(\mathbf{w}_2\) perp to \(\mathbf{w}_1\):</strong> Guess
+                    \(\mathbf{u}_2 = (2,-1,0)\) since \((1,2,1)\cdot(2,-1,0)=0\). Normalize: \(\mathbf{w}_2 =
+                    \frac{1}{\sqrt{5}}(2,-1,0)\).</div>
+                  <div class="step"><strong>Find \(\mathbf{w}_3\) perp to both:</strong> Solve
+                    \(\mathbf{x}\cdot\mathbf{v}_1=0\) and \(\mathbf{x}\cdot\mathbf{u}_2=0\): \(\begin{cases}x+2y+z=0
+                    \\ 2x-y=0\end{cases} \Rightarrow y=2x, z=-5x\). Basis: \((1,2,-5)\). Normalize: \(\mathbf{w}_3 =
+                    \frac{1}{\sqrt{30}}(1,2,-5)\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="sec" id="s71">
+            <div class="sec-t">7.1–7.2 — Gram–Schmidt & Orthogonal Complements</div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final C Q3 (Full Gram-Schmidt + projection + W&#x22A5;)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                    class="tag tt">Gram–Schmidt</span><span class="tag tt">Subspace projection</span><span
+                    class="tag tt">W&#x22A5;</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[4+4+4+3 pts]</span>
+                <div class="q">
+                  <p>\(\mathbf{w}_1=(1,1,0,1)\), \(\mathbf{w}_2=(-1,1,0,0)\), \(\mathbf{w}_3=(1,2,0,0)\),
+                    \(W=\text{span}(\mathbf{w}_1,\mathbf{w}_2,\mathbf{w}_3)\).<br>
+                    (a) Gram–Schmidt orthogonal basis \(\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}\). (b)
+                    \(\text{proj}_W(3,3,3,3)\). (c) B-coordinates. (d) Basis for \(W^\perp\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> \(\mathbf{v}_1=\mathbf{w}_1=(1,1,0,1)\),
+                      \(\|\mathbf{v}_1\|^2=3\).</div>
+                    <div class="step">
+                      \(\mathbf{w}_2\cdot\mathbf{v}_1=0\Rightarrow\mathbf{v}_2=\mathbf{w}_2=(-1,1,0,0)\),
+                      \(\|\mathbf{v}_2\|^2=2\).</div>
+                    <div class="step">\(\mathbf{w}_3\cdot\mathbf{v}_1=3\), \(\mathbf{w}_3\cdot\mathbf{v}_2=3\).
+                      \(\mathbf{v}_3=\mathbf{w}_3-(1)\mathbf{v}_1-\tfrac{3}{2}\mathbf{v}_2=(\tfrac{3}{2},-\tfrac{1}{2},0,-1)\).
+                    </div>
+                    <div class="step"><strong>(b)</strong> \(\mathbf{x}=(3,3,3,3)\).
+                      \(\mathbf{x}\cdot\mathbf{v}_1=9\), \(\mathbf{x}\cdot\mathbf{v}_2=0\),
+                      \(\mathbf{x}\cdot\mathbf{v}_3=0\).
+                      \(\text{proj}_W\mathbf{x}=\tfrac{9}{3}\mathbf{v}_1=(3,3,0,3)\).</div>
+                    <div class="step"><strong>(c)</strong> B-coordinates: \((3,0,0)\).</div>
+                    <div class="step"><strong>(d)</strong> Residual: \((3,3,3,3)-(3,3,0,3)=(0,0,3,0)\).</div>
+                    <div class="ans">Basis for \(W^\perp\): \(\{(0,0,1,0)\}\}</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final D Q9 (Gram-Schmidt → orthonormal + W&#x22A5;)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                    class="tag tt">Gram–Schmidt</span><span class="tag tt">Orthonormal</span><span
+                    class="tag tt">W&#x22A5;</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[4+3+4 pts]</span>
+                <div class="q">
+                  <p>\(\mathbf{w}_1=(1,0,0,1)\), \(\mathbf{w}_2=(0,2,2,1)\), \(\mathbf{w}_3=(2,1,1,5/2)\). (a) Basis
+                    for \(W\) from \(\{\mathbf{w}_i\}\). (b) Gram–Schmidt orthonormal basis. (c) Basis for
+                    \(W^\perp\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> Row reduce:
+                      \(\mathbf{w}_3=2\mathbf{w}_1+\tfrac{1}{2}\mathbf{w}_2\) (dependent). Basis:
+                      \(\{\mathbf{w}_1,\mathbf{w}_2\}\), \(\dim W=2\).</div>
+                    <div class="step"><strong>(b)</strong> \(\mathbf{v}_1=\mathbf{w}_1\),
+                      \(\hat\mathbf{u}_1=\tfrac{1}{\sqrt2}(1,0,0,1)\). \(\mathbf{w}_2\cdot\mathbf{v}_1=1\),
+                      proj\(=\tfrac{1}{2}(1,0,0,1)\). \(\mathbf{v}_2=(-\tfrac{1}{2},2,2,\tfrac{1}{2})\). Normalize.
+                    </div>
+                    <div class="step"><strong>(c)</strong> Solve \(\mathbf{x}\cdot\mathbf{w}_1=0\) and
+                      \(\mathbf{x}\cdot\mathbf{w}_2=0\): free \(x_2=s,x_3=t\); \(x_4=-2s-2t\), \(x_1=2s+2t\).</div>
+                    <div class="ans">Basis for \(W^\perp\): \(\{(2,1,0,-2),(2,0,1,-2)\}\)</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final B Q8(d) (Gram-Schmidt on col(A))</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                    class="tag tt">Gram–Schmidt</span><span class="tag tt">Column space</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[6 pts]</span>
+                <div class="q">
+                  <p>Apply Gram–Schmidt to the 3 columns of
+                    \(A=\begin{bmatrix}-1&6&6\\3&-8&3\\1&-2&6\\1&-4&-3\end{bmatrix}\) (RREF = \(I_3\) top rows
+                    &Rightarrow; all 3 cols are pivot cols).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">\(\mathbf{a}_1=(-1,3,1,1)\), \(\|\mathbf{v}_1\|^2=12\).</div>
+                    <div class="step">\(\mathbf{a}_2\cdot\mathbf{v}_1=-36\). proj\(=3(-1,3,1,1)\).
+                      \(\mathbf{v}_2=(9,-17,-5,-7)\), \(\|\mathbf{v}_2\|^2=444\).</div>
+                    <div class="step">\(\mathbf{a}_3\cdot\mathbf{v}_1=6\), \(\mathbf{a}_3\cdot\mathbf{v}_2=-6\).
+                      \(\mathbf{v}_3=\mathbf{a}_3-\tfrac{1}{2}\mathbf{v}_1+\tfrac{1}{74}\mathbf{v}_2\).</div>
+                    <div class="note">For orthogonal (not orthonormal) basis: no need to normalize. Always verify
+                      orthogonality of v&#8323;.</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final B Q13 (W&#x22A5; via null space)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Orthogonal
+                    complement</span><span class="tag tt">null(A) vs row(A)</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[2+2 pts]</span>
+                <div class="q">
+                  <p>\(W=\{(x,y,z)\in\mathbb{R}^3:x+y-z=0\}\). (a) Find \(A\) with \(W=\text{null}(A)\). (b) Basis
+                    for \(W^\perp\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> \(A=\begin{bmatrix}1&1&-1\end{bmatrix}\) (constraint
+                      \(x+y-z=0\) is exactly \(A\mathbf{x}=\mathbf{0}\)).</div>
+                    <div class="step"><strong>(b)</strong> Fundamental theorem:
+                      \(\text{null}(A)^\perp=\text{row}(A)=\text{span}\{(1,1,-1)\}\).</div>
+                    <div class="ans">Basis for \(W^\perp\): \(\{(1,1,-1)\}\)</div>
+                    <div class="note"><strong>Key identity:</strong> If W = null(A), then W&#x22A5; = row(A). Always
+                      the fastest method.</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+          <div class="div"></div>
+          <div class="sec" id="s72">
+            <div class="sec-t">7.3 — Method of Least Squares</div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final A Q7 (Least squares + error vector + scalar)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Normal
+                    equations</span><span class="tag tt">Error</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[6+3+1 pts]</span>
+                <div class="q">
+                  <p>\(A=\begin{bmatrix}2&1\\4&2\\-2&1\end{bmatrix}\), \(\mathbf{b}=(3,2,1)^T\). (a) All
+                    least-squares solutions. (b) Error vector. (c) Least-squares error.</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> \(A^TA=\begin{bmatrix}24&8\\8&6\end{bmatrix}\),
+                      \(A^T\mathbf{b}=\begin{bmatrix}12\\8\end{bmatrix}\). Solve: \(x_1=1/10\), \(x_2=6/5\).</div>
+                    <div class="step"><strong>(b)</strong> \(A\hat{\mathbf{x}}=(7/5,14/5,7/5)^T\). Error vector:
+                      \(\mathbf{b}-A\hat{\mathbf{x}}=(8/5,-4/5,-2/5)^T\).</div>
+                    <div class="step"><strong>(c)</strong>
+                      \(\|\mathbf{b}-A\hat{\mathbf{x}}\|=\frac{\sqrt{84}}{5}=\frac{2\sqrt{21}}{5}\).</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Final B Q11 (Line of best fit)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Linear
+                    regression</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[5 pts]</span>
+                <div class="q">
+                  <p>Find \(y=mx+b\) best fitting \(\{(2,1),(5,2),(7,3),(8,3)\}\) by least squares.</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step">Setup: \(A=\begin{bmatrix}2&1\\5&1\\7&1\\8&1\end{bmatrix}\),
+                      \(\mathbf{b}=(1,2,3,3)^T\).</div>
+                    <div class="step">\(A^TA=\begin{bmatrix}142&22\\22&4\end{bmatrix}\),
+                      \(A^T\mathbf{b}=\begin{bmatrix}57\\9\end{bmatrix}\), \(\det=84\).</div>
+                    <div class="step">\(m=30/84=5/14\), \(b=24/84=2/7\).</div>
+                    <div class="ans">\(y=\dfrac{5}{14}x+\dfrac{2}{7}\)</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+            <div class="qc">
+              <div class="qch"><span class="qcsrc">Practice Q4 (Curve fitting setup + solve inconsistent
+                  system)</span>
+                <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Curve
+                    fitting</span><span class="tag tt">Normal equations</span></div>
+              </div>
+              <div class="qcb"><span class="pts">[2 parts]</span>
+                <div class="q">
+                  <p><strong>(a)</strong> Set up \(A\mathbf{x}=\mathbf{b}\) (do not solve) for \(y=a+bt+dt^3\)
+                    through \((-1,6),(0,2),(1,-2),(2,-24)\).</p>
+                  <p><strong>(b)</strong>
+                    \(\begin{bmatrix}1&2\\1&0\\0&1\end{bmatrix}\mathbf{x}=\begin{bmatrix}3\\5\\7\end{bmatrix}\) is
+                    inconsistent. Find \(\hat{\mathbf{x}}\).</p>
+                </div>
+                <details class="sol">
+                  <summary>Show Solution</summary>
+                  <div class="sb2">
+                    <div class="step"><strong>(a)</strong> Each \((t_i,y_i)\) gives row \([1,t_i,t_i^3]\). No
+                      \(t^2\) term &Rightarrow; 3
+                      unknowns.<br>\(A=\begin{bmatrix}1&-1&-1\\1&0&0\\1&1&1\\1&2&8\end{bmatrix}\),
+                      \(\mathbf{b}=(6,2,-2,-24)^T\), \(\mathbf{x}=(a,b,d)^T\)</div>
+                    <div class="step"><strong>(b)</strong> Normal equations:
+                      \(A^TA=\begin{bmatrix}2&2\\2&5\end{bmatrix}\), \(A^T\mathbf{b}=(8,13)^T\). \(\det=6\).</div>
+                    <div class="step">\(\hat x_1=14/6=7/3\), \(\hat x_2=10/6=5/3\).</div>
+                    <div class="ans">\(\hat{\mathbf{x}}=(7/3,\;5/3)\)</div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chapter" id="ch8">
+          <div class="ch-hdr">
+            <div class="ch-n">08</div>
+            <div>
+              <div class="ch-tag">Part III &middot; Chapter 8</div>
+              <div class="ch-title">Symmetric Matrices and SVD</div>
+              <div class="ch-desc">Spectral theorem, orthogonal diagonalization, singular values, SVD decomposition,
+                pseudo-inverse</div>
+            </div>
+          </div>
+          <table class="ft">
+            <tr>
+              <th>Subtopic</th>
+              <th>Appears in</th>
+              <th>Priority</th>
+            </tr>
+            <tr>
+              <td>Symmetric matrix properties, orthogonal diag</td>
+              <td>Practice Q6 (all parts), Final D Q1 T/F</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>SVD — singular values, Σ, U, V</td>
+              <td>Practice Q5(a)–(e)</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>Orthogonal matrix conditions</td>
+              <td>Practice Q9(c)</td>
+              <td><span class="dot dme"></span><span class="dot dme"></span> MEDIUM</td>
+            </tr>
+            <tr>
+              <td>Pseudo-inverse</td>
+              <td>Practice Q5(e)</td>
+              <td><span class="dot dlo"></span> LOW</td>
+            </tr>
+          </table>
+          <div class="fb">
+            <h4>Key Formulas — Ch 8</h4>
+            <div class="f">Spectral Theorem: \(A\) symmetric \(\Leftrightarrow A=PDP^T\) (\(P\) orthogonal, \(D\)
+              diagonal real)<br>SVD: \(A=U\Sigma V^T\) &nbsp;|&nbsp; Singular values:
+              \(\sigma_i=\sqrt{\lambda_i(A^TA)}\)<br>Pseudo-inverse: \(A^+=V\Sigma^+U^T\) &nbsp;|&nbsp; \(A,B\) sym
+              \(\Rightarrow A+B, A^TA, A^2\) sym; \(AB\) not in general</div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q6 (Spectral theorem — full question)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Orthogonal
+                  diagonalization</span><span class="tag tt">Matrix powers</span><span class="tag tt">Symmetric
+                  products</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[MCQ × 5 + open]</span>
+              <div class="q">
+                <p>\(A=\begin{bmatrix}5&2\\2&2\end{bmatrix}=P\begin{bmatrix}6&0\\0&1\end{bmatrix}P^T\),
+                  \(P=\begin{bmatrix}\frac{\sqrt2}{\sqrt5}&-\frac{1}{\sqrt5}\\\frac{1}{\sqrt5}&\frac{\sqrt2}{\sqrt5}\end{bmatrix}\).<br>
+                  (a) Symmetric? (b) Eigenvalues? (c) Eigenvectors? (d) \(A^{100}\). (e) Which of \(A+B\), \(A^TA\),
+                  \(AB\), \(A^2\) are symmetric if \(A,B\) symmetric?</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>(a) Yes</strong> — \(a_{12}=a_{21}=2\). &#10003;</div>
+                  <div class="step"><strong>(b)</strong> Read diagonal of \(D\): \(\lambda_1=6,\lambda_2=1\).
+                    <strong>Answer C.</strong>
+                  </div>
+                  <div class="step"><strong>(c)</strong> Columns of \(P\):
+                    \(\mathbf{p}_1=(\tfrac{\sqrt2}{\sqrt5},\tfrac{1}{\sqrt5})\) for \(\lambda=6\);
+                    \(\mathbf{p}_2=(-\tfrac{1}{\sqrt5},\tfrac{\sqrt2}{\sqrt5})\) for \(\lambda=1\). <strong>Answer
+                      B.</strong></div>
+                  <div class="step"><strong>(d)</strong>
+                    \(A^{100}=PD^{100}P^T=P\begin{bmatrix}6^{100}&0\\0&1\end{bmatrix}P^T\) (leave as product of 3).
+                  </div>
+                  <div class="step"><strong>(e)</strong> \((A+B)^T=A+B\,\checkmark\) &nbsp;
+                    \((A^TA)^T=A^TA\,\checkmark\) &nbsp; \((AB)^T=BA\neq AB\) in general \(\times\) &nbsp;
+                    \((A^2)^T=A^2\,\checkmark\)</div>
+                  <div class="ans">Symmetric: \(A+B\), \(A^TA\), \(A^2\). Not guaranteed: \(AB\).</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q5 (Full SVD walkthrough)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">SVD</span><span
+                  class="tag tt">Singular values</span><span class="tag tt">Pseudo-inverse</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[MCQ + open]</span>
+              <div class="q">
+                <p>\(B=\begin{bmatrix}3&6\\1&2\end{bmatrix}\). (a) Inverse? (b) Non-zero singular values. (c)
+                  \(\Sigma\). (d) Given eigenvectors of \(B^TB\) are \((-2,1)\) and \((1/2,1)\), find \(V^T\). (e)
+                  Pseudo-inverse \(B^+\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>(a)</strong> \(\det(B)=6-6=0\). <strong>No inverse. Answer B.</strong>
+                  </div>
+                  <div class="step"><strong>(b)</strong> \(B^TB=\begin{bmatrix}10&20\\20&40\end{bmatrix}\).
+                    Eigenvalues: \(\lambda(\lambda-50)=0\). Only nonzero: \(\sigma_1=\sqrt{50}\). <strong>Answer
+                      C.</strong></div>
+                  <div class="step"><strong>(c)</strong> \(\Sigma=\begin{bmatrix}\sqrt{50}&0\\0&0\end{bmatrix}\)
+                  </div>
+                  <div class="step"><strong>(d)</strong> Normalize eigenvectors:
+                    \(\hat\mathbf{v}_1=\frac{1}{\sqrt5}(-2,1)\) (for \(\lambda=50\)),
+                    \(\hat\mathbf{v}_2=\frac{1}{\sqrt5}(1,2)\) (for \(\lambda=0\)).
+                    \(V^T=\frac{1}{\sqrt5}\begin{bmatrix}-2&1\\1&2\end{bmatrix}\).</div>
+                  <div class="step"><strong>(e)</strong> \(B^+=V\Sigma^+U^T\) where
+                    \(\Sigma^+=\begin{bmatrix}1/\sqrt{50}&0\\0&0\end{bmatrix}\). Leave as product of 3 matrices.
+                  </div>
+                  <div class="note"><strong>SVD Recipe:</strong> ① B&#7488;B eigenvalues → σᵢ = √λᵢ ② eigenvectors
+                    of B&#7488;B → cols of V ③ uᵢ = (1/σᵢ)Bvᵢ → cols of U ④ B = UΣV&#7488;, B&#8314; =
+                    VΣ&#8314;U&#7488;.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q9(c) (Orthogonal matrix conditions)</span>
+              <div class="tags"><span class="tag tme">&#9679; MEDIUM</span><span class="tag tt">Orthogonal
+                  matrix</span></div>
+            </div>
+            <div class="qcb"><span class="pts">[MCQ]</span>
+              <div class="q">
+                <p>\(A=\frac{1}{3}\begin{bmatrix}\alpha&2&-1\\2&\beta&2\\-1&2&\gamma\end{bmatrix}\). Orthogonal if
+                  \(\alpha,\beta,\gamma\) are: A)&nbsp;1,1,1 &nbsp;B)&nbsp;2,&minus;1,2 &nbsp;C)&nbsp;1,2,1
+                  &nbsp;D)&nbsp;&minus;2,0,2</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Orthogonal: columns of \(M=3A\) must have norm 3, mutually perpendicular.</div>
+                  <div class="step">Test B (\(\alpha=2,\beta=-1,\gamma=2\)): cols \((2,2,-1)\), \((2,-1,2)\),
+                    \((-1,2,2)\).</div>
+                  <div class="step">Norms: \(\sqrt{9}=3\,\checkmark\) each. Dot products: \(4-2-2=0\,\checkmark\),
+                    \(-2+4-2=0\,\checkmark\), \(-2-2+4=0\,\checkmark\).</div>
+                  <div class="ans"><strong>Answer B: \(\alpha=2,\beta=-1,\gamma=2\).</strong></div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="chapter" id="ch9">
+          <div class="ch-hdr"
+            style="margin-bottom: 20px; background: rgba(167, 139, 250, 0.1); border-left: 5px solid #a78bfa; padding: 10px 15px;">
+            <div
+              style="font-weight: 800; color: #a78bfa; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">
+              PART IV: Appendix</div>
+          </div>
+          <div class="ch-hdr">
+            <div class="ch-n">09</div>
+            <div>
+              <div class="ch-tag">Part IV &middot; Chapter 9 (Appendix A)</div>
+              <div class="ch-title">Complex Numbers</div>
+              <div class="ch-desc">Arithmetic, polar form, De Moivre's theorem, nth roots, and conjugate pair
+                eigenvalues</div>
+            </div>
+          </div>
+          <table class="ft">
+            <tr>
+              <th>Subtopic</th>
+              <th>Appears in</th>
+              <th>Priority</th>
+            </tr>
+            <tr>
+              <td>De Moivre's theorem (powers)</td>
+              <td>Practice Q3(b), Final B Q2(b), Final C Q9(b)</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>nth roots of complex numbers</td>
+              <td>Practice Q3(c)</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>Arithmetic in a+bi form, modulus</td>
+              <td>Final B Q2(a), Final D T/F</td>
+              <td><span class="dot dhi"></span><span class="dot dhi"></span><span class="dot dhi"></span> HIGH</td>
+            </tr>
+            <tr>
+              <td>Conjugate pair eigenvalues</td>
+              <td>Final A Q1(e)</td>
+              <td><span class="dot dme"></span><span class="dot dme"></span> MEDIUM</td>
+            </tr>
+          </table>
+          <div class="fb">
+            <h4>Key Formulas — Complex Numbers</h4>
+            <div class="f">Polar: \(z=r(\cos\theta+i\sin\theta)=re^{i\theta}\), \(r=|z|=\sqrt{a^2+b^2}\)<br>De
+              Moivre: \(z^n=r^n(\cos n\theta+i\sin n\theta)\)<br>\(n\)th roots: \(w_k=r^{1/n}e^{i(\theta+2\pi
+              k)/n}\), \(k=0,1,\ldots,n-1\)<br>\(z^{-1}=\bar{z}/|z|^2\) &nbsp;|&nbsp; Real matrix \(\Rightarrow\)
+              complex eigenvalues come in conjugate pairs</div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q3(b) / Final B Q2(b) / Final C Q9(b) (De Moivre)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">De
+                  Moivre</span><span class="tag tt">Powers</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p><strong>(Practice Q3b &amp; Final C Q9b)</strong> \(z=1+i\). Find \(z^{12}\).<br>A)&nbsp;\(2^6\)
+                  B)&nbsp;\(-2^6\) C)&nbsp;\(2^6i\) D)&nbsp;\((2^6/\sqrt2)+(2^6/\sqrt2)i\)</p>
+                <p><strong>(Final B Q2b)</strong> Evaluate \((1+i)^{20}\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Convert: \(z=1+i\), \(|z|=\sqrt{2}\), \(\arg(z)=\pi/4\). So
+                    \(z=\sqrt{2}\,e^{i\pi/4}\).</div>
+                  <div class="step"><strong>z&#185;&#178;:</strong> \((\sqrt{2})^{12}e^{i\cdot12\pi/4}=2^6\cdot
+                    e^{i3\pi}=64\cdot(-1)=-64=-2^6\). <strong>Answer B.</strong></div>
+                  <div class="step"><strong>(1+i)&#178;&#8304;:</strong>
+                    \((\sqrt{2})^{20}e^{i\cdot5\pi}=2^{10}\cdot(-1)=\mathbf{-1024}\).</div>
+                  <div class="note">Always: ① find r and θ ② apply De Moivre z&#8319; =
+                    r&#8319;e&#8305;&#8319;&#952; ③ reduce angle mod 2π and evaluate cos/sin.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Practice Q3(c) (4th roots of −16)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">nth roots</span>
+              </div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p>Find all 4th roots of \(z=-16\). Sketch on the complex plane.</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step">Polar: \(-16=16e^{i\pi}\).</div>
+                  <div class="step">Roots: \(w_k=2e^{i(\pi+2\pi k)/4}\) for
+                    \(k=0,1,2,3\).<br>\(w_0=\sqrt2+i\sqrt2\), \(w_1=-\sqrt2+i\sqrt2\), \(w_2=-\sqrt2-i\sqrt2\),
+                    \(w_3=\sqrt2-i\sqrt2\).</div>
+                  <div class="ans">4 roots equally spaced on circle of radius 2 at angles 45°, 135°, 225°, 315°.
+                  </div>
+                  <div class="note">Pattern: n roots of re&#8305;&#952;: magnitude r&#185;&#8190;&#8319;, angles (θ
+                    + 2πk)/n, k = 0, …, n−1.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Midterm 2 Exam MC8 & Q5 (Complex Numbers)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Complex
+                  Roots</span><span class="tag tt">Argument</span></div>
+            </div>
+            <div class="qcb">
+              <p><strong>(MC8):</strong> Arg(\((1+i)(-1+i))\).</p>
+              <p><strong>(Q5):</strong> Find the 6th roots of -64.</p>
+            </div>
+            <details class="sol">
+              <summary>Show Solution</summary>
+              <div class="sb2">
+                <div class="step"><strong>(MC8):</strong> \(\text{Arg}(1+i) = \pi/4\). \(\text{Arg}(-1+i) = 3\pi/4\).
+                  Sum \(= \pi\). <strong>Answer E.</strong></div>
+                <div class="step"><strong>(Q5):</strong> \(-64 = 64e^{i(\pi + 2k\pi)}\). Roots: \(64^{1/6}e^{i(\pi/6 +
+                  k\pi/3)} = 2e^{i(\pi/6 + k\pi/3)}\) for \(k=0,1,2,3,4,5\).</div>
+                <div class="ans">Roots: \(2e^{i\pi/6}, 2e^{i\pi/2}, 2e^{i5\pi/6}, 2e^{i7\pi/6}, 2e^{i3\pi/2},
+                  2e^{i11\pi/6}\).</div>
+              </div>
+            </details>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Final B Q2(a) &amp; Final A Q1(e) (Arithmetic + conjugate
+                eigenvalues)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span class="tag tt">Complex
+                  arithmetic</span><span class="tag tt">Conjugate eigenvalues</span></div>
+            </div>
+            <div class="qcb">
+              <div class="q">
+                <p><strong>(Final B Q2a)</strong> Write \(z=\frac{1}{1+i}\) as \(a+bi\) and find \(|z|\).</p>
+                <p><strong>(Final A Q1e)</strong> \(\begin{bmatrix}1&-2\\2&1\end{bmatrix}\) has eigenvalue
+                  \(\lambda_1=1+2i\) with eigenvector \(\begin{bmatrix}i\\1\end{bmatrix}\). Find eigenvector for
+                  \(\lambda_2=1-2i\).</p>
+              </div>
+              <details class="sol">
+                <summary>Show Solution</summary>
+                <div class="sb2">
+                  <div class="step"><strong>Q2a:</strong> Multiply by conjugate:
+                    \(\frac{1-i}{(1+i)(1-i)}=\frac{1-i}{2}=\frac{1}{2}-\frac{i}{2}\). \(|z|=1/\sqrt{2}\).</div>
+                  <div class="step"><strong>Q1e:</strong> For real matrices, complex eigenvalues come in conjugate
+                    pairs. If \(\lambda_1\) has eigenvector \(\mathbf{v}\), then \(\bar\lambda_1\) has eigenvector
+                    \(\bar{\mathbf{v}}\).</div>
+                  <div class="ans">Eigenvector for \(\lambda_2=1-2i\): \(\begin{bmatrix}-i\\1\end{bmatrix}\)</div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="qc">
+            <div class="qch"><span class="qcsrc">Quiz 7 Q2 (Complex Arithmetic & Polar)</span>
+              <div class="tags"><span class="tag thi">&#9733; HIGH YIELD</span><span
+                  class="tag tt">Arithmetic</span><span class="tag tt">Polar</span></div>
+            </div>
+            <div class="qcb">
+              <p><strong>(a)</strong> Evaluate \((3-i)(1+3i)\). <strong>(b)</strong> Convert \(z = 4e^{i2\pi/3}\) to
+                \(a+bi\).</p>
+            </div>
+            <details class="sol">
+              <summary>Show Solution</summary>
+              <div class="sb2">
+                <div class="step"><strong>(a):</strong> \(3 + 9i - i - 3i^2 = 6+8i\).</div>
+                <div class="ans"><strong>(b):</strong> \(4(\cos\tfrac{2\pi}{3} + i\sin\tfrac{2\pi}{3}) = -2 +
+                  2\sqrt{3}i\).</div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="sbox">
+          <h4>Master Quick-Reference — Most Tested Formulas</h4>
+          <div class="si"><strong>Rank-Nullity:</strong> nullity = #cols &minus; rank (on EVERY exam)</div>
+          <div class="si"><strong>Projection:</strong> proj&#8336;x = (x&middot;a/|a|&sup2;)a &nbsp;|&nbsp; matrix P
+            = aa&#7488;/(a&#7488;a)</div>
+          <div class="si"><strong>Normal equations:</strong> A&#7488;Ax&#0770; = A&#7488;b (always use for least
+            squares)</div>
+          <div class="si"><strong>Char. poly:</strong> det(A &minus; &lambda;I) = 0; then null(A &minus; &lambda;I)
+            for eigenvectors</div>
+          <div class="si"><strong>Matrix powers:</strong> A&#7487; = PD&#7487;P&#8315;&#185;; symmetric: A&#7487; =
+            PD&#7487;P&#7488;</div>
+          <div class="si"><strong>Steady-state:</strong> solve P&#119144; = &#119144; with &sum;qᵢ = 1</div>
+          <div class="si"><strong>Gram&ndash;Schmidt:</strong> v&#8342; = w&#8342; &minus;
+            &sum;&#8342;&#8341;&#8326; (w&#8342;&middot;v&#8343;/|v&#8343;|&sup2;)v&#8343;</div>
+          <div class="si"><strong>W&#x22A5;:</strong> if W = null(A) then W&#x22A5; = row(A)</div>
+          <div class="si"><strong>SVD:</strong> &sigma;ᵢ = &radic;&lambda;ᵢ(A&#7488;A); B = U&Sigma;V&#7488;;
+            B&#8314; = V&Sigma;&#8314;U&#7488;</div>
+          <div class="si"><strong>De Moivre:</strong> z&#8319; = r&#8319;(cos n&theta; + i sin n&theta;); nth roots
+            at angles (&theta; + 2&pi;k)/n</div>
+          <div class="si"><strong>onto:</strong> rank=#rows &nbsp;|&nbsp; <strong>one-to-one:</strong> rank=#cols
+            &nbsp;|&nbsp; <strong>invertible:</strong> both (square only)</div>
+          <div class="si"><strong>Similar matrices</strong> (A=PBP&#8315;&#185;): same eigenvalues, same char. poly,
+            same det</div>
+          <div class="si"><strong>Subspace proof:</strong> check 3 things &mdash; zero vector, closure under
+            addition, closure under scaling</div>
+        </div>
+        <div style="text-align:center;padding:2rem 0 0;font-size:12px;color:#888">MATH 232 Complete Study Guide
+          &middot; Finals A&ndash;D &amp; Spring 2026 Practice Final &middot; SFU April 2026</div>
+
+        <!-- OFFICIAL FINAL EXAM FORMULA SHEET -->
+        <div class="chapter" id="chF" style="margin-top: 40px; border-top: 1px solid #3b82f633; padding-top: 40px;">
+          <div class="ch-hdr" style="border-left-color: #60a5fa;">
+            <div class="ch-n" style="color: #60a5fa;">FS</div>
+            <div>
+              <div class="ch-tag" style="background: #1e3a8a; color: #60a5fa; border: 1px solid #1d4ed8;">Official
+                Resource</div>
+              <div class="ch-title">Final Exam Formula Sheet</div>
+              <div class="ch-desc">Direct replica of the Math 232 Spring 2026 sheet provided in the exam.</div>
+            </div>
+          </div>
+
+          <div class="sbox" style="background: rgba(30, 58, 138, 0.1); border-color: #1d4ed8; padding: 25px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 0.95em; line-height: 1.6;">
+              <div>
+                <h4 style="color: #60a5fa; margin-top: 0; border-bottom: 1px solid #3b82f633;">Determinant & Inverse
+                </h4>
+                <p>\(\det(A) = a_{1j}C_{1j} + \dots + a_{nj}C_{nj}\) (\(C_{ij} = (-1)^{i+j}M_{ij}\))</p>
+                <p>\(A = \begin{bmatrix}a&b\\c&d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d&-b\\-c&a
+                  \end{bmatrix}\)</p>
+
+                <h4 style="color: #60a5fa; margin-top: 20px; border-bottom: 1px solid #3b82f633;">Lines, Planes &
+                  Complex</h4>
+                <p>\(\mathbf{n}\cdot(\mathbf{p}-\mathbf{x})=0\) &nbsp;|&nbsp; \(Ax+By+Cz=D\)</p>
+                <p>\(\mathbf{x}=\mathbf{x}_0+t\mathbf{v}\) &nbsp;|&nbsp;
+                  \(\mathbf{x}=\mathbf{p}+t\mathbf{u}+s\mathbf{v}\)</p>
+                <p>\(z^{-1} = \frac{\bar{z}}{|z|^2}\) &nbsp;|&nbsp; \(z = |z|e^{i\theta} = |z|(\cos\theta +
+                  i\sin\theta)\)</p>
+                <p>\(z^n = r^n(\cos n\theta + i\sin n\theta)\)</p>
+              </div>
+              <div>
+                <h4 style="color: #60a5fa; margin-top: 0; border-bottom: 1px solid #3b82f633;">Operators & Projections
+                </h4>
+                <p>\([T] = [T(\mathbf{e}_1) \dots T(\mathbf{e}_n)]\)</p>
+                <p>\(\text{proj}_{\mathbf{a}}\mathbf{x} = \frac{\mathbf{x}\cdot\mathbf{a}}{\|\mathbf{a}\|^2}\mathbf{a}\)
+                  &nbsp;|&nbsp; \(P = \frac{1}{\mathbf{a}^T\mathbf{a}}\mathbf{a}\mathbf{a}^T\)</p>
+                <p>\(P = A(A^TA)^{-1}A^T\) (Subspace projection)</p>
+
+                <h4 style="color: #60a5fa; margin-top: 20px; border-bottom: 1px solid #3b82f633;">Basis & Orthogonality
+                </h4>
+                <p>\([\mathcal{B}_2 | \mathcal{B}_1] \xrightarrow{\text{rref}} [I_n | P_{\mathcal{B}_2 \leftarrow
+                  \mathcal{B}_1}]\)</p>
+                <p>\(A^TA\hat{\mathbf{x}} = A^T\mathbf{b}\) (Normal System)</p>
+                <p>\(\mathbf{v}_j = \mathbf{w}_j - \text{proj}_{W_{j-1}}\mathbf{w}_j\) (Gram-Schmidt)</p>
+                <p>\(A = PDP^{-1}\) | \(A = PDP^T\) | \(A = U\Sigma V^T\) (SVD)</p>
+              </div>
+            </div>
+          </div>
+    </main>
+  </div>
+  <script>
+    function upd() {
+      const all = document.querySelectorAll("details.sol"), open = document.querySelectorAll("details.sol[open]");
+      const p = all.length ? (open.length / all.length * 100) : 0;
+      document.getElementById("pf").style.width = p.toFixed(1) + "%";
+      document.getElementById("pt").textContent = open.length + "/" + all.length;
+    }
+    document.addEventListener("toggle", upd, true);
+    upd();
+    function go(id) { const e = document.getElementById(id); if (e) e.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    function openAll() { document.querySelectorAll("details.sol").forEach(d => d.open = true); upd(); }
+    function closeAll() { document.querySelectorAll("details.sol").forEach(d => d.open = false); upd(); }
+    function doSearch(q) {
+      clearTimeout(window._st);
+      window._st = setTimeout(() => {
+        const s = q.trim().toLowerCase();
+        document.querySelectorAll(".qc").forEach(c => {
+          c.style.display = (!s || c.textContent.toLowerCase().includes(s)) ? "" : "none";
+        });
+        if (window.MathJax) MathJax.typesetPromise();
+      }, 200);
+    }
+    const _sbl = document.querySelectorAll(".sbl");
+    window.addEventListener("scroll", () => {
+      const chs = ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8", "ch9", "chF"];
+      let cur = "";
+      chs.forEach(id => { const e = document.getElementById(id); if (e && e.getBoundingClientRect().top < 200) cur = id; });
+      _sbl.forEach(l => {
+        const match = (l.textContent.includes("Ch 1") && cur === "ch1") || (l.textContent.includes("Ch 2") && cur === "ch2") ||
+          (l.textContent.includes("Ch 3") && cur === "ch3") || (l.textContent.includes("Ch 4") && cur === "ch4") ||
+          (l.textContent.includes("Ch 5") && cur === "ch5") || (l.textContent.includes("Ch 6") && cur === "ch6") ||
+          (l.textContent.includes("Ch 7") && cur === "ch7") || (l.textContent.includes("Ch 8") && cur === "ch8") ||
+          (l.textContent.includes("Ch 9") && cur === "ch9") || (l.textContent.includes("FINAL") && cur === "chF");
+        l.classList.toggle("active", match);
+      });
+    }, { passive: true });
+  </script>
+</body>
+
+</html>
