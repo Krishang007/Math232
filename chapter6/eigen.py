@@ -1,7 +1,12 @@
 import numpy as np
 import sympy as sp
 
-from gaussianElimination import gaussian_elimination, parametric_solution
+try:
+    # When imported as `chapter6.eigen`
+    from .gaussianElimination import gaussian_elimination, parametric_solution
+except ImportError:
+    # When run as a standalone script from within `chapter6/`
+    from gaussianElimination import gaussian_elimination, parametric_solution
 
 lam = sp.symbols('λ')
 
